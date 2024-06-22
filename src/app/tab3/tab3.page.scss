@@ -1,0 +1,134 @@
+ion-toolbar,
+ion-content{
+    --background: #eaf1ff;
+}
+.ion-no-border{
+    border-bottom: 1px solid #f4f4f4;
+}
+.kosong{
+    padding: 40px 20px;
+    margin-top: 10vh;
+}
+
+.item:focus{
+    outline: none;
+}
+.item{
+    margin: 12px auto;
+    padding: 20px;
+    background: #fff;
+    font-size: 90%;
+    box-sizing: border-box;
+    border-radius: 12px;
+    width: 94vw;
+}
+.item .foto{
+    height: 20vw;
+    background-size: cover;
+    background-position: center center;
+    -webkit-border-radius: 12px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+.item .row{
+    margin-bottom: 10px;
+}
+.item .col12{
+    text-align: right;
+    margin-top: 10px;
+}
+.item .row .col9{
+    padding-left: 20px;
+    padding-right: 10px;
+}
+.item .row .col9 .no{
+    font-family: appmedium;
+    color: #aca8a8;
+    margin-bottom: 8px;
+}
+.item .row .col9 .jumlah{
+    font-family: appmedium;
+}
+.item .row .col9 .titel{
+    margin-bottom: 4px;
+}
+.item .row .col12 .col6{
+    font-family: "appbold";
+    font-size: 110%;
+}
+.item .row .col12{
+    border-top: 1px solid #f4f4f4;
+    padding-top: 8px;
+}
+.item .titel{
+    font-size: 110%;
+    font-family: "appbold";
+}
+.item .orderid,
+.item .status{
+}
+.item .orderid{
+    color: #2c3e50;
+    font-weight: bolder;
+}
+.item .status{
+    text-align: right;
+    font-size: 90%;
+    font-family: 'appbold';
+}
+
+.red{
+    color: #c0392b;
+}
+.blue{
+    color: #2980b9;
+}
+.green{
+    color: #27ae60;
+}
+
+.nav{
+    display: flex;
+    background: #eaf1ff;
+}
+.nav-item{
+    padding: 16px 14px 0 14px;
+    color: #9b9898;
+}
+.nav-item .title{
+    font-family: "appmedium";
+    font-size: 85%;
+    margin-bottom: 8px;
+}
+.nav-item .line{
+    width: 60%;
+    border-bottom: 3px solid transparent;
+}
+.nav-item.active .title{
+    color: var(--ion-color-primary);
+}
+.nav-item.active .line{
+    border-bottom: 3px solid var(--ion-color-primary);
+}
+
+
+.nilai .staroff,
+.nilai .staron{
+    font-size: 160%;
+    margin-right: 2px;
+}
+.nilai .staroff{
+    color: #afafaf;
+}
+.nilai .staron{
+    color: #f7b731;
+}
+
+.toptag{
+    background-color: var(--ion-color-primary);
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 24px;
+    margin-right: 8px;
+    font-size: 80%;
+}

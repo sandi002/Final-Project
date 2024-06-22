@@ -1,0 +1,48 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="primary" defaultHref="/rekening"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="bold">Tambah/Edit Rekening</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="form">
+    <form [formGroup]="inputForm">
+      <div class="item">
+        <div class="titel">Pemilik Atasnama</div>
+        <div class="input">
+          <ion-input formControlName="atasnama"></ion-input>
+        </div>
+      </div>
+      <div class="item">
+        <div class="titel">Nomor Rekening</div>
+        <div class="input">
+          <ion-input formControlName="norek"></ion-input>
+        </div>
+      </div>
+      <div class="item">
+        <div class="titel">Bank</div>
+        <div class="input">
+          <ion-select formControlName="idbank" interface="action-sheet">
+            <ion-select-option value="">Pilih Bank</ion-select-option>
+            <ion-select-option *ngFor="let p of bank" value="{{p.id}}">{{p.nama}}</ion-select-option>
+          </ion-select>
+        </div>
+      </div>
+      <div class="item">
+        <div class="titel">Kantor Cabang</div>
+        <div class="input">
+          <ion-input formControlName="kcp"></ion-input>
+        </div>
+      </div>
+    </form>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <div class="btnwrap">
+    <ion-button expand="full" color="primary" (click)="simpan()" class="btn">Simpan Rekening</ion-button>
+  </div>
+</ion-footer>

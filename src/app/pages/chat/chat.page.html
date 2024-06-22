@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs" color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="font-bold">Live Chat</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="pesan" #pesano>
+  <div class="pesanload">
+    <div *ngFor="let p of pesan" class="pesanitem {{p.letak}}">
+      <div class="isipesan" *ngIf="p.idproduk > 0" routerLink="/produks/{{p.idproduk}}">
+        <div class="row">
+          <div class="col3 text-left">
+            <img src="{{p.produk_foto}}" style="max-width:100%;max-height:60px;border-radius:6px;" />
+          </div>
+          <div class="col9 text-left">
+            <div class="font-medium" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-left:8px;">{{p.produk_nama}}</div>
+            <div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:85%;padding-left:8px;">Rp. {{p.produk_harga}} | {{p.produk_stok}} tersedia</div>
+          </div>
+        </div>
+      </div>
+      <div class="isipesan" *ngIf="p.idproduk == 0">
+        {{p.pesan}}
+        <br *ngIf="p.letak != 'tengah'"/>
+        <span *ngIf="p.baca == 0 && p.letak != 'tengah'" class="read">{{p.waktu}}</span>&nbsp;
+        <ion-icon *ngIf="p.baca == 0 && p.letak != 'tengah'" name="checkmark"></ion-icon>
+        <span *ngIf="p.baca == 1 && p.letak != 'tengah'" class="read">{{p.waktu}}</span>&nbsp;
+        <ion-icon *ngIf="p.baca == 1 && p.letak != 'tengah'" name="checkmark-done"></ion-icon>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer lines="none">
+  <div class="row">
+    <div class="col10">
+      <ion-input type="text" class="input" (keyup.enter)="kirimPesan()" placeholder="ketik pesan..." [(ngModel)]="pesanform"></ion-input>
+    </div>
+    <div class="col2" slot="end">
+      <ion-icon name="send" class="send" (click)="kirimPesan()"></ion-icon>
+    </div>
+  </div>
+</ion-footer>

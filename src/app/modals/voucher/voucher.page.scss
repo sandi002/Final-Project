@@ -1,0 +1,28 @@
+.nopromo{
+    padding: 20px;
+    color: var(--ion-color-danger);
+    text-align: center;
+    border-radius: 8px;
+    border: 1px solid #bdc3c7;
+}
+
+.voucher{
+    border-radius: 8px;
+    border: 1px solid #bdc3c7;
+    padding: 12px;
+    background-color: #f9f9f9;
+    margin-bottom: 12px;
+}
+.voucher .nama{
+    font-family: appmedium;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+.voucher .potongan b{
+    font-family: appbold;
+    color: var(--ion-color-primary);
+}
+.voucher .minbeli{
+    font-size: 80%;
+    color: #bdc3c7;
+}

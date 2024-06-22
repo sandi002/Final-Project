@@ -1,0 +1,7 @@
+{
+  "name": "Jadiorder",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

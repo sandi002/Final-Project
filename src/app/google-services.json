@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "106898611934",
+    "project_id": "ellysportstore-4d966",
+    "storage_bucket": "ellysportstore-4d966.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:106898611934:android:184e500595a10f25752c4f",
+        "android_client_info": {
+          "package_name": "com.ellysport.store"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "106898611934-a7i446m31qlkqgd1jlftfo0nsrngpvt0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxglg6WbmDPpSjha14wT9nYKQ037ScuWY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "106898611934-a7i446m31qlkqgd1jlftfo0nsrngpvt0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

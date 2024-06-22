@@ -1,0 +1,62 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="primary" defaultHref="/tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="bold">Profil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="userdetail row">
+    <div class="col2"><img src="/assets/icon/user.png" /></div>
+    <div class="col10">
+      <div class="nama">{{nama}}</div>
+      <span class="level">{{level}}</span>
+    </div>
+  </div>
+  <div class="usersaldowrap" routerLink="/saldo">
+    <div class="usersaldo">
+      <div class="row">
+        <div class="col2"><img src="/assets/icon/saldo.png" /></div>
+        <div class="col10">
+          <div class="saldotitel">Saldo Anda</div>
+          <div class="saldo" *ngIf="saldo">Rp {{saldo|number:'':'es'}}</div>
+          <div class="saldo" *ngIf="!saldo">Rp 0</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ion-list class="menu">
+    <div routerLink="/profil" class="row">
+      <div class="col2"><ion-icon name="create-outline" color="primary"></ion-icon></div>
+      <div class="col8">Ubah Profil</div>
+      <div class="col2"><ion-icon name="chevron-forward" color="primary" slot="end"></ion-icon></div>
+    </div>
+    <div routerLink="/ppoblist" class="row">
+      <div class="col2"><ion-icon name="cellular" color="primary"></ion-icon></div>
+      <div class="col8">Transaksi PPOB</div>
+      <div class="col2"><ion-icon name="chevron-forward" color="primary" slot="end"></ion-icon></div>
+    </div>
+    <div routerLink="/rekening" class="row">
+      <div class="col2"><ion-icon name="card" color="primary"></ion-icon></div>
+      <div class="col8">Rekening Saya</div>
+      <div class="col2"><ion-icon name="chevron-forward" color="primary" slot="end"></ion-icon></div>
+    </div>
+    <div routerLink="/alamat" class="row">
+      <div class="col2"><ion-icon name="locate" color="primary"></ion-icon></div>
+      <div class="col8">Alamat Pengiriman</div>
+      <div class="col2"><ion-icon name="chevron-forward" color="primary" slot="end"></ion-icon></div>
+    </div>
+    <div routerLink="/gantipass" class="row">
+      <div class="col2"><ion-icon name="lock-closed" color="primary"></ion-icon></div>
+      <div class="col8">Ubah Kata Sandi</div>
+      <div class="col2"><ion-icon name="chevron-forward" color="primary" slot="end"></ion-icon></div>
+    </div>
+  </ion-list>
+  <div class="menubutton">
+    <ion-button color="danger" expand="full" (click)="logout()" class="btn">
+      Keluar
+    </ion-button>
+  </div>
+</ion-content>

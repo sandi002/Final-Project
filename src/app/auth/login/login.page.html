@@ -1,0 +1,56 @@
+<ion-content class="ion-padding">
+  <div class="logo">
+    <img src="/assets/logo.png" alt="logo" />
+  </div>
+  <div class="sign-wrap" *ngIf="!otp">
+    <div class="title font-mon-black text-primary">
+      MASUK
+    </div>
+    <div class="mb20 text-center" *ngIf="mode == 1">
+      Masukkan nomor whatsapp atau alamat email anda untuk mengirimkan kode otp
+    </div>
+    <form #form="ngForm" (ngSubmit)="login(form)" method="post">
+      <div class="row form-group">
+        <div class="col1 text-info">
+          <fa-icon [icon]="user"></fa-icon>
+        </div>
+        <div class="col11">
+          <input placeholder="email / no handphone" ngModel name="email" />
+        </div>
+      </div>
+      <div class="row form-group" *ngIf="mode == 2">
+        <div class="col1 text-info">
+          <fa-icon [icon]="unlock"></fa-icon>
+        </div>
+        <div class="col11">
+          <input placeholder="password" type="password" ngModel name="password" />
+        </div>
+      </div>
+    
+      <div class="mb40">
+        <ion-button type="submit" expand="full" class="btn-primary">Login</ion-button>
+      </div>
+      <ion-button *ngIf="mode == 2" color="secondary" expand="full" routerLink="/lupapassword">Lupa Password</ion-button>
+    </form>
+  </div>
+  <div class="sign-wrap" *ngIf="otp">
+    <div class="mb20">
+      Masukkan kode otp yang telah kami kirim ke whatsapp atau email
+    </div>
+    <div (click)="resend()" class="text-primary mb20 text-center"><fa-icon icon="sync-alt"></fa-icon> Kirim ulang kode OTP</div>
+    <div class="form-group">
+        <input type="number" placeholder="kode OTP" class="text-center otp" [(ngModel)]="kodeotp" />
+    </div>
+    <ion-button (click)="lanjut()" expand="full" class="btn-primary">Lanjutkan</ion-button>
+  </div>
+  <div class="text-center">
+    Dengan Mendaftar, Anda setuju dengan 
+    <a href="https://distrohistory.my.id/page/Syarat-Ketentuan-Layanan" target="_blank">Syarat & Ketentuan Layanan</a> dan 
+    <a href="https://distrohistory.my.id/page/Kebijakan-Privasi" target="_blank">Kebijakan Privasi</a> Kami
+  </div>
+</ion-content>
+<ion-footer class="ion-padding">
+  <div class="text-center">
+    Belum punya Akun? <a href="#" routerLink="/signup" class="link">Mendaftar</a>
+  </div>
+</ion-footer>

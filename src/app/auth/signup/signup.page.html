@@ -1,0 +1,77 @@
+<ion-content class="ion-padding">
+  <div class="logo">
+    <img src="/assets/logo.png" alt="logo" />
+  </div>
+  <div class="sign-wrap" *ngIf="!otp">
+    <div class="title font-mon-black text-primary">
+      MENDAFTAR
+    </div>
+    <div class="mb20 text-center" *ngIf="mode == 1">
+      Masukkan nomor whatsapp atau alamat email anda untuk mengirimkan kode otp
+    </div>
+    <form #form="ngForm" (ngSubmit)="register(form)" method="post">
+      <div class="row form-group" *ngIf="mode == 2">
+        <div class="col1 text-info">
+          <fa-icon [icon]="user"></fa-icon>
+        </div>
+        <div class="col11">
+          <input placeholder="Nama Lengkap" ngModel name="nama" />
+        </div>
+      </div>
+      <div class="row form-group" *ngIf="mode == 1">
+        <div class="col1 text-info">
+          <fa-icon [icon]="user"></fa-icon>
+        </div>
+        <div class="col11">
+          <input placeholder="No Whatsapp / Email" ngModel name="email" />
+        </div>
+      </div>
+      <div class="row form-group" *ngIf="mode == 2">
+        <div class="col1 text-info">
+          <fa-icon [icon]="email"></fa-icon>
+        </div>
+        <div class="col11">
+          <input placeholder="Alamat Email" ngModel name="email" />
+        </div>
+      </div>
+      <div class="row form-group" *ngIf="mode == 2">
+        <div class="col1 text-info">
+          <fa-icon [icon]="hp"></fa-icon>
+        </div>
+        <div class="col11">
+          <input placeholder="No Whatsapp" ngModel name="nohp" />
+        </div>
+      </div>
+      <div class="row form-group" *ngIf="mode == 2">
+        <div class="col1 text-info">
+          <fa-icon [icon]="unlock"></fa-icon>
+        </div>
+        <div class="col11">
+          <input placeholder="Password" type="password" ngModel name="password" />
+        </div>
+      </div>
+    
+      <ion-button type="submit" expand="full" class="btn-primary mb50 mt30">Mendaftar</ion-button>
+    </form>
+  </div>
+  <div class="sign-wrap" *ngIf="otp">
+    <div class="mb20">
+      Masukkan kode otp yang telah kami kirim ke whatsapp atau email
+    </div>
+    <div (click)="resend()" class="text-primary mb20 text-center"><fa-icon icon="sync-alt"></fa-icon> Kirim ulang kode OTP</div>
+    <div class="form-group">
+        <input placeholder="kode OTP" class="text-center otp" [(ngModel)]="kodeotp" />
+    </div>
+    <ion-button (click)="lanjut()" expand="full" class="btn-primary">Lanjutkan</ion-button>
+  </div>
+  <div class="text-center">
+    Dengan Mendaftar, Anda setuju dengan 
+    <a href="https://distrohistory.my.id/page/Syarat-Ketentuan-Layanan" target="_blank">Syarat & Ketentuan Layanan</a> dan 
+    <a href="https://distrohistory.my.id/page/Kebijakan-Privasi" target="_blank">Kebijakan Privasi</a> Kami
+  </div>
+</ion-content> 
+<ion-footer class="ion-padding">
+  <div class="text-center">
+    Belum punya Akun? <a href="#" routerLink="/login" class="link">Masuk</a>
+  </div>
+</ion-footer>

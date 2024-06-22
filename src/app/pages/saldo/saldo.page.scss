@@ -1,0 +1,79 @@
+ion-toolbar,
+ion-content{
+    --background: #eaf1ff;
+}
+.usersaldowrap{
+    position: relative;
+    width: 100%;
+    justify-content: center;
+    padding: 6vw 6vw 0 6vw;
+    margin-bottom: 10px;
+}
+.mb30.row{
+    padding: 0 4.5vw;
+}
+.mb30.row .col6 .padding{
+    padding: 1vw;
+}
+.usersaldo{
+    box-sizing: border-box;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    padding: 2vw;
+    background-color: #fff;
+}
+.usersaldo .col2{
+    padding: 1vw;
+}
+.usersaldo .col10{
+    padding: 2vw;
+}
+.saldotitel{
+    font-size: 100%;
+    color: #757575;
+    font-family: "appmedium";
+}
+.usersaldo .titel{
+    font-family: "appmedium";
+    font-size: 110%;
+    margin-bottom: 8px;
+}
+.usersaldo .saldo{
+    font-family: "appblack";
+    font-size: 150%;
+    color: var(--ion-color-primary);
+}
+.usersaldo .tombol ion-button{
+    border-radius: 4px;
+    font-family: "appbold";
+}
+
+.riwayat{
+    padding: 0 6vw;
+}
+.riwayat .title{
+    text-align: left;
+}
+.riwayat .riwayatitem{
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+/*
+.riwayat .riwayatitem:last-child{
+    border-bottom: none;
+}
+*/
+.riwayat .riwayatitem fa-icon{
+    font-size: 160%;
+}
+.riwayat .riwayatitem .darike{
+    margin-bottom: 4px;
+}
+.riwayat .riwayatitem .tgl{
+    font-size: 80%;
+    color: #adadad;
+}
+.riwayat .riwayatitem .status{
+    font-size: 80%;
+}

@@ -1,0 +1,48 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1" color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="font-bold">Topup {{ jenis }}</ion-title>
+  </ion-toolbar>
+  <div class="form">
+    <div class="mb10" *ngIf="jenis != 'Pulsa'">
+      <label>Pilih Kategori {{ jenis }}</label>
+      <ion-select [(ngModel)]="brand" (ionChange)="cekHarga()" interface="action-sheet">
+        <ion-select-option *ngFor="let b of pilihanbrand" value="{{ b }}">{{ b }}</ion-select-option>
+      </ion-select>
+    </div>
+    <div class="mb10">
+      <label>Masukkan ID/Nomor</label>
+      <ion-input type="text" class="input-bold" [(ngModel)]="nohp" (ionInput)="cekNomer()" debounce="1000"></ion-input>
+    </div>
+  </div>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="produk mb50">
+    <div class="notif" *ngIf="!skeleton && produk.length == 0">Belum ada produk yang sesuai</div>
+    <div class="skeleton" *ngIf="skeleton"></div>
+    <div class="skeleton" *ngIf="skeleton"></div>
+    <div class="skeleton" *ngIf="skeleton"></div>
+    <div class="produk-list row" *ngIf="produk.length > 0">
+      <div class="col6" *ngFor="let i of produk;index as idx">
+        <div (click)="selectProduk(idx)" [ngClass]="(produkselect == i.id) ? 'item active' : 'item'">
+          <div class="nama">{{ i.nama }}</div>
+          <div class="harga">Rp {{ i.harga|number:'':'es' }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer class="btnwrap" *ngIf="produkselect > 0">
+  <div class="row">
+    <div class="col8">
+      <div class="total">Rp {{ total|number:'':'es' }}</div>
+    </div>
+    <div class="col4">
+      <ion-button color="primary" (click)="beliProduk()" expand="full">BELI</ion-button>
+    </div>
+  </div>
+</ion-footer>

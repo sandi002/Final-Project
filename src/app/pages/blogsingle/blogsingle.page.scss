@@ -1,0 +1,19 @@
+.blog-single{
+    display: block;
+}
+
+.title{
+    font-family: "appbold";
+    text-align: left;
+    margin-bottom: 4px;
+}
+.img img{
+    border-radius: 20px;
+    width: 100%;
+}
+.tgl{
+    font-family: "appmedium";
+    margin-bottom: 30px;
+    font-size: 90%;
+    color: var(--ion-color-medium);
+}

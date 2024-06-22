@@ -1,0 +1,28 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="primary" routerLink="/tabs/tab4" defaultHref="/tabs/tab4"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="bold">Daftar Alamat</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="alamat row" *ngFor="let res of hasil" (click)="pilihaksi(res.id)">
+    <div class="col10">
+      <div class="judul">{{res.judul}}</div>
+      <div class="nama">{{res.nama}} - {{res.nohp}}</div>
+      <div class="lengkap">{{res.alamat}}<br/>{{res.kec}},&nbsp;{{res.kab}}&nbsp;{{res.kodepos}}</div>
+    </div>
+    <div class="col2">
+      <ion-icon color="primary" name="ellipsis-vertical"></ion-icon>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <div class="btnwrap">
+    <ion-button expand="full" color="primary" routerLink="/editalamat/0" class="btn">Tambah Alamat Baru</ion-button>
+  </div>
+</ion-footer>
+

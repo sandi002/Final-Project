@@ -1,0 +1,71 @@
+  .product{
+    padding: 10px;
+    margin-top: 20px;
+    font-size: 90%;
+  }
+  .product .col6{
+    padding: 10px;
+    position: relative;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 14px;
+  }
+  .product .img{
+    background-size: cover;
+    background-position: center center;
+    border-radius: 8px;
+    height: 30vw;
+    width: 100%;
+  }
+  .product .title{
+    font-family: "appblack";
+    color: #2c3e50;
+  }
+  .product .title .line{
+    border-bottom: 3px solid #2c3e50;
+    width: 20%;
+    margin: 10px auto;
+  }
+  .product .prod-title{
+    margin-top: 5px;
+    font-size: 90%;
+    flex-grow: 1;
+    align-items: flex-start;
+  }
+  .product .prod-harga{
+    color: #2c3e50;
+    font-weight: 500;
+  }
+  .product .prod-po{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px 8px;
+    border-radius: 8px;
+    background: #2c3e50;
+    color: #fff;
+    font-weight: bold;
+    font-size: 60%;
+  }
+  .product .prod-nilai{
+    text-align: right;
+    color: #2c3e50;
+    align-items: center;
+  }
+  
+.kosong b{
+    display: block;
+    font-size: 150%;
+    margin-bottom: 20px;
+    color: #e74c3c;
+    font-family: 'appblack';
+    margin-top: 40px;
+}
+.kosong{
+  margin-top: 20vw;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  color: #e74c3c;
+}

@@ -1,0 +1,24 @@
+ion-toolbar,
+ion-content{
+    --background: #eaf1ff;
+}
+.form{
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+.item,
+.row{
+    padding: 5px 20px;
+    font-size: 90%;
+    margin-bottom: 8px;
+}
+.row{
+    margin-top: 20px;
+}
+.item .titel{
+    font-family: "appmedium";
+    font-size: 110%;
+}
+.col6{
+    padding: 8px;
+}

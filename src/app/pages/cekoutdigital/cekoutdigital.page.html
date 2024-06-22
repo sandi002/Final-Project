@@ -1,0 +1,130 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab2" color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="font-bold">Detail Pembelian</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="inputForm" class="formwrap">
+    <ion-input class="hidden" formControlName="diskon"></ion-input>
+    <ion-input class="hidden" formControlName="total"></ion-input>
+    <ion-input class="hidden" formControlName="saldo"></ion-input>
+    <ion-input class="hidden" formControlName="idproduk"></ion-input>
+    <ion-input class="hidden" formControlName="metodebayar"></ion-input>
+    <ion-input class="hidden" formControlName="voucher"></ion-input>
+  <div class="seg">
+    <div class="segtitle mb10">Daftar Belanja</div>
+    <!--<div class="habis" *ngIf="stoknya == 0">
+      belum ada produk terpilih
+    </div>-->
+    <ion-list class="wrapitem" *ngIf="produk" lines="none">
+      <div class="row item" *ngFor="let i of produk">
+        <div class="col3 foto" [ngStyle]="{'background-image':'url('+i.foto+')'}">
+        </div>
+        <div class="col9 right">
+            <div class="title">{{i.nama}}</div>
+            <div class="variasi">{{i.variasi}}</div>
+            <div class="jumlah">x{{i.jumlah}} pcs</div>
+            <div class="harga">{{i.harga}}</div>
+            <div class="ket">{{i.keterangan}}</div>
+        </div>
+      </div>
+    </ion-list>
+  </div>
+  <div class="seg">
+    <div class="row mb10">
+      <div class="segtitle col8">Voucher Promo</div>
+      <div class="col4 ubah"><span class="text-primary" (click)="openVoucher()">Pilih Voucher</span></div>
+    </div>
+    <div class="kurir">
+      <div *ngIf="!voucheroke">
+        <ion-button type="button" (click)="openVoucher()" color="primary" expand="full"><fa-icon [icon]="faPc"></fa-icon>&nbsp;&nbsp;Masukkan Kode Voucher</ion-button>
+      </div>
+      <div class="voucher" *ngIf="voucheroke">
+        <div class="text-primary">{{vouchernama}}</div>
+        <div class="nama"><b>Rp {{voucherdiskon|number:'':'es'}}</b> (maksimal Rp {{voucherdiskonmax|number:'':'es'}})</div>
+      </div>
+    </div>
+  </div>
+  <div class="seg">
+    <div class="row mb10">
+      <div class="segtitle col8">Metode Pembayaran</div>
+      <div class="col4 ubah"><span class="text-primary" *ngIf="bayarmetode == 1" (click)="openMetode()">Ubah Metode</span></div>
+    </div>
+    <div class="pilihsaldo" *ngIf="saldo > 0 && !saldosip" (click)="bayarSaldo()">
+      <div class="font-medium titel"><fa-icon [icon]="faDompet"></fa-icon> &nbsp;Klik untuk menggunakan saldo</div>
+      <div class="">Saldo saat ini Rp. {{saldo|number:'':'es'}}</div>
+    </div>
+    <div class="pakesaldo" *ngIf="saldoke">
+      <div class="font-bold titel">
+        <fa-icon [icon]="faCek"></fa-icon> &nbsp;Bayar menggunakan saldo
+      </div>
+      <span *ngIf="saldo >= total">Saldo digunakan Rp. {{total|number:'':'es'}}</span>
+      <span *ngIf="saldo < total">Saldo digunakan Rp. {{saldo|number:'':'es'}}</span>
+    </div>
+    <div class="saldokosong" *ngIf="saldo == 0 || saldokosong">
+      pembayaran menggunakan saldo tidak dapat digunakan karena saldo Anda saat ini Rp. 0
+    </div>
+    <div class="saldokurang" *ngIf="saldokurang">
+      saldo Anda saat ini kurang dari total tagihan pembayaran, maka sisanya silahkan lunasi dengan pilihan metode pembayaran dibawah
+      <div class="mb10"></div>
+      <div class="font-medium">Pembayaran Kurang: Rp. {{kurang|number:'':'es'}}</div>
+    </div>
+    <div class="pilihongkir">
+      <ion-select formControlName="pilihmetode" interface="action-sheet" (ionChange)="pilihMetode()" #metode>
+        <ion-select-option value="1" *ngIf="payment_cod == 1">Bayar Di Tempat (COD)</ion-select-option>
+        <ion-select-option value="2" *ngIf="payment_transfer == 1">Transfer Manual</ion-select-option>
+        <ion-select-option value="3" *ngIf="payment_tripay == 1">Tripay Otomatis (Virtual Account, Alfamart, dll)</ion-select-option>
+        <ion-select-option value="4" *ngIf="payment_midtrans == 1">Midtrans Otomatis (Virtual Account, Alfamart, dll)</ion-select-option>
+      </ion-select>
+    </div>
+    <div class="metode" (click)="openMetode()" *ngIf="bayarmetode == 1">
+      {{metodetext}}
+    </div>
+    <div class="line"></div>
+    <div class="bayar">
+      <div class="row">
+        <div class="col6">Harga Produk</div>
+        <div class="col6 bold right" *ngIf="harga">{{harga|number:'':'es'}}</div>
+        <div class="col6 bold right" *ngIf="!harga">0</div>
+      </div>
+      <div class="row text-danger" *ngIf="voucheroke">
+        <div class="col6">Diskon</div>
+        <div class="col6 bold right" *ngIf="voucherdiskon">{{voucherdiskon|number:'':'es'}}</div>
+        <div class="col6 bold right" *ngIf="!voucherdiskon">0</div>
+      </div>
+      <div class="mb20"></div>
+      <div class="row total">
+        <div class="col6 bold">Total Pembayaran</div>
+        <div class="col6 bold right text-primary" *ngIf="total">{{total|number:'':'es'}}</div>
+        <div class="col6 bold right text-primary" *ngIf="!total">0</div>
+      </div>
+    </div>
+  </div>
+  </form>
+</ion-content>
+<ion-footer lines="none">
+  <!--
+  <div class="row">
+    <div class="hargawrap">
+      <div class="titel">Total Pembayaran</div>
+      <div class="bold text-primary" *ngIf="total">{{total|number:'':'es'}}</div>
+      <div class="bold text-primary" *ngIf="!total">0</div>
+    </div>
+  </div>
+  -->
+  <div class="btnwrap">
+    <div *ngIf="isoke">
+      <ion-button expand="full" color="success" (click)="buatPesananWA()"><ion-icon class="btnicon" name="logo-whatsapp"></ion-icon> &nbsp;CHECKOUT WHATSAPP</ion-button>
+    </div>
+    <div *ngIf="isoke">
+      <ion-button expand="full" color="primary" (click)="buatPesanan()">LANJUT BAYAR PESANAN &nbsp;<ion-icon class="btnicon" name="chevron-forward-outline"></ion-icon></ion-button>
+    </div>
+    <div *ngIf="!isoke">
+      <ion-button expand="full" color="medium">info belum lengkap</ion-button>
+    </div>
+  </div>
+</ion-footer>

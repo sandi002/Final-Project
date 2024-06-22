@@ -1,0 +1,58 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="primary" defaultHref="/tabs/tab4" routerLink="/tabs/tab4"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="bold">Saldo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="usersaldowrap" routerLink="/saldo">
+    <div class="usersaldo">
+      <div class="row">
+        <div class="col2"><img src="/assets/icon/saldo.png" /></div>
+        <div class="col10">
+          <div class="saldotitel">Saldo Anda</div>
+          <div class="saldo" *ngIf="saldo">Rp {{saldo|number:'':'es'}}</div>
+          <div class="saldo" *ngIf="!saldo">Rp 0</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mb30">
+    <div class="col6">
+      <div class="padding">
+        <ion-button color="primary" expand="full" (click)="topupSaldo()"><fa-icon [icon]="topup"></fa-icon>&nbsp; &nbsp;TOPUP</ion-button>
+      </div>
+    </div>
+    <div class="col6">
+      <div class="padding">
+        <ion-button color="danger" expand="full" (click)="tarikSaldo()"><fa-icon [icon]="tarik"></fa-icon>&nbsp; &nbsp;PENARIKAN</ion-button></div>
+    </div>
+  </div>
+  <div class="riwayat">
+    <div class="title">Riwayat Saldo</div>
+    <div class="item">
+      <div class="riwayatitem" *ngFor="let i of riwayat" (click)="bayarSaldo(i.id,i.jenis)">
+        <div class="row">
+          <div class="col2">
+            <fa-icon [icon]="arup" class="text-success" *ngIf="i.jenis == 2"></fa-icon>
+            <fa-icon [icon]="ardown" class="text-danger" *ngIf="i.jenis == 1"></fa-icon>
+          </div>
+          <div class="col7">
+            <div class="darike">{{i.darike}}</div>
+            <div class="tgl">{{i.tgl}}</div>
+            <div class="status text-medium" *ngIf="i.status == 0">[sedang diproses oleh admin]</div>
+            <div class="status text-danger" *ngIf="i.status == 2">[dibatalkan]</div>
+            <div class="status text-success" *ngIf="i.status == 1">[berhasil]</div>
+          </div>
+          <div class="col3">
+            <div class="text-success font-medium" *ngIf="i.jenis == 2">+Rp {{i.jumlah|number:'':'es'}}</div>
+            <div class="text-danger font-medium" *ngIf="i.jenis == 1">-Rp {{i.jumlah|number:'':'es'}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

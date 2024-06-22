@@ -1,0 +1,64 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/saldo" color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="bold">Detail Pembayaran</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="wrap">
+    <div class="total">
+      <div class="text">Total Pembayaran</div>
+      <div class="inv" *ngIf="total">Rp {{total|number:'':'es'}}</div>
+      <div class="inv" *ngIf="!total">Rp 0</div>
+      <div class="notif" *ngIf="status == 0">
+        Bayar transaksi sesuai dengan jumlah yang tertera diatas.
+      </div>
+      <div class="notif-sukses" *ngIf="status == 1">
+        Pembayaran telah lunas dan saldo sudah ditambahkan.
+      </div>
+      <div class="notif-batal" *ngIf="status == 2">
+        Topup telah dibatalkan.
+      </div>
+      <div class="info" *ngIf="status == 0">
+        <div class="text">Batas Waktu Pembayaran</div>
+        <span class="kadal text-danger">{{kadaluarsa}}</span>
+      </div>
+      <div class="info batas" *ngIf="status == 0">
+        Pembayaran anda dicek dalam waktu 24 jam setelah konfirmasi pembayaran. Diwajibkan untuk membayar sesuai total pembayaran sebelum batas waktu berakhir.
+      </div>
+    </div>
+    <div class="transfer" *ngIf="bukti != ''">
+      <div class="text mb20">
+        Bukti Transfer
+      </div>
+      <div class="bukti">
+        <img src="{{bukti}}" />
+      </div>
+    </div>
+    <div class="transfer" *ngIf="status == 0">
+      <div class="text mb10">
+        Tujuan Pembayaran
+      </div>
+      <div class="rekening" *ngFor="let r of rekening">
+        <div class="bank">{{r.bank}} Cab. {{r.kcp}}</div>
+        <div class="atasnama">a/n {{r.atasnama}}</div>
+        <div class="norek">{{r.norek}}</div>
+      </div>
+      <div class="text mb30">
+        <b>PENTING:</b>
+        <ul class="list">
+          <li>Mohon lakukan pembayaran dalam 1x24 jam</li>
+          <li>Sistem akan otomatis mendeteksi apabila pembayaran sudah masuk</li>
+          <li>Apabila sudah transfer dan status pembayaran belum berubah, mohon konfirmasi pembayaran</li>
+          <li>Pesanan akan dibatalkan secara otomatis jika Anda tidak melakukan pembayaran</li>
+        </ul>
+      </div>
+      <ion-button color="primary" expand="full" (click)="presentActionSheet()">UPLOAD BUKTI TRANSFER</ion-button>
+      <ion-button color="danger" expand="full" routerLink="/saldo">BAYAR NANTI</ion-button>
+    </div>
+  </div>
+</ion-content>

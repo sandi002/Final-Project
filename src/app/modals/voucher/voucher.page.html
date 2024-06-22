@@ -1,0 +1,30 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="end" class="close-button" (click)="closeModal()">
+      <ion-icon name="close" color="danger"></ion-icon>
+    </ion-buttons>
+    <ion-title class="font-bold">Pilih Voucher</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="voucher" *ngFor="let i of item" (click)="cekode(i.kode)">
+    <div class="nama">{{i.nama}}</div>
+    <div class="potongan">diskon sampai <b *ngIf="i.tipe == 1">{{i.potongan|number:'':'es'}}%</b><b *ngIf="i.tipe == 2">Rp {{i.potongan|number:'':'es'}}</b></div>
+    <div class="minbeli">minimal transaksi Rp {{i.potonganmin|number:'':'es'}}</div>
+  </div>
+  <div class="nopromo" *ngIf="item.length == 0">
+    saat ini belum ada penawaran promo yg tersedia, ikuti terus perkembangannya jangan lewatkan penawaran terbaik dari kami nanti.
+  </div>
+</ion-content>
+
+<ion-footer class="ion-padding">
+  <div class="row">
+    <div class="col10">
+      <ion-input [(ngModel)]="kode" class="form-control" placeholder="Masukkan Kode Voucher..."></ion-input>
+    </div>
+    <div class="col2">
+      <ion-button (click)="cekVoucher()" color="primary">CEK</ion-button>
+    </div>
+  </div>
+</ion-footer>

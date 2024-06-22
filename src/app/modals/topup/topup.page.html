@@ -1,0 +1,42 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="end" class="close-button" (click)="closeModal()">
+      <ion-icon name="close" color="danger"></ion-icon>
+    </ion-buttons>
+    <ion-title class="font-bold text-primary">Topup Saldo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="form">
+    <div class="item">
+      <div class="titel">Masukkan Jumlah Topup</div>
+      <div class="input">
+        <ion-input type="number" [(ngModel)]="jumlah"></ion-input>
+      </div>
+      <small class="text-danger">hanya masukkan angka saja, tidak pakai koma dan titik.<br/>contoh: 50000</small>
+    </div>
+    <div class="item mb10">
+      <div class="row">
+        <div class="col6">
+          <ion-button color="medium" expand="full" (click)="setJumlah(50000)">50.000</ion-button>
+        </div>
+        <div class="col6">
+          <ion-button color="medium" expand="full" (click)="setJumlah(100000)">100.000</ion-button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col6">
+          <ion-button color="medium" expand="full" (click)="setJumlah(150000)">150.000</ion-button>
+        </div>
+        <div class="col6">
+          <ion-button color="medium" expand="full" (click)="setJumlah(200000)">200.000</ion-button>
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <ion-button class="mb10" color="primary" expand="full" (click)="topup()">Topup Saldo</ion-button>
+      <ion-button color="danger" expand="full" (click)="closeModal()">Batalkan</ion-button>
+    </div>
+  </div>
+</ion-content>

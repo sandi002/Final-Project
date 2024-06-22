@@ -1,0 +1,55 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button routerLink="/tabs/tab3" color="primary" defaultHref="/tabs/tab4"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="font-bold">Ulasan Pesanan</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div *ngFor="let res of data; let i = index">
+    <div class="section mb20" *ngIf="masukin == false">
+      <div class="row mb20">
+        <div class="col4"><div class="foto" [ngStyle]="{'background-image':'url('+res.foto+')'}"></div></div>
+        <div class="col8">
+          <div class="titel mt10 mb10">{{res.nama}}</div>
+          <div class="tgl">{{res.tgl}}</div>
+        </div>
+      </div>
+      
+      <div class="nilai mb20">
+        <ion-icon class="staron" name="star" *ngIf="res.review >= 1"></ion-icon>
+        <ion-icon class="staron" name="star" *ngIf="res.review >= 2"></ion-icon>
+        <ion-icon class="staron" name="star" *ngIf="res.review >= 3"></ion-icon>
+        <ion-icon class="staron" name="star" *ngIf="res.review >= 4"></ion-icon>
+        <ion-icon class="staron" name="star" *ngIf="res.review >= 5"></ion-icon>
+        <ion-icon class="staroff" name="star" *ngIf="res.review < 1"></ion-icon>
+        <ion-icon class="staroff" name="star" *ngIf="res.review < 2"></ion-icon>
+        <ion-icon class="staroff" name="star" *ngIf="res.review < 3"></ion-icon>
+        <ion-icon class="staroff" name="star" *ngIf="res.review < 4"></ion-icon>
+        <ion-icon class="staroff" name="star" *ngIf="res.review < 5"></ion-icon>
+      </div>
+      <div class="komeng">{{res.komeng}}</div>
+    </div>
+    <div class="section mb20" *ngIf="masukin == true">
+      <div class="foto" [ngStyle]="{'background-image':'url('+res.foto+')'}"></div>
+      <div class="titel mt10 mb20">{{res.nama}}</div>
+      <div class="nilai mb20">
+        <ion-icon class="staron" name="star" (click)="updateNilai(i,1)" *ngIf="res.review >= 1"></ion-icon>
+        <ion-icon class="staron" name="star" (click)="updateNilai(i,2)" *ngIf="res.review >= 2"></ion-icon>
+        <ion-icon class="staron" name="star" (click)="updateNilai(i,3)" *ngIf="res.review >= 3"></ion-icon>
+        <ion-icon class="staron" name="star" (click)="updateNilai(i,4)" *ngIf="res.review >= 4"></ion-icon>
+        <ion-icon class="staron" name="star" (click)="updateNilai(i,5)" *ngIf="res.review >= 5"></ion-icon>
+        <ion-icon class="staroff" name="star" (click)="updateNilai(i,1)" *ngIf="res.review < 1"></ion-icon>
+        <ion-icon class="staroff" name="star" (click)="updateNilai(i,2)" *ngIf="res.review < 2"></ion-icon>
+        <ion-icon class="staroff" name="star" (click)="updateNilai(i,3)" *ngIf="res.review < 3"></ion-icon>
+        <ion-icon class="staroff" name="star" (click)="updateNilai(i,4)" *ngIf="res.review < 4"></ion-icon>
+        <ion-icon class="staroff" name="star" (click)="updateNilai(i,5)" *ngIf="res.review < 5"></ion-icon>
+      </div>
+      <ion-textarea class="input mb10" rows=4 type="text" [(ngModel)]="res.komeng" placeHolder="berikan ulasan singkat..."></ion-textarea>
+    </div>
+    <ion-button *ngIf="masukin == true" expand="full" color="primary" (click)="simpan()">Simpan Ulasan</ion-button>
+  </div>
+
+</ion-content>

@@ -1,0 +1,70 @@
+ion-content,
+ion-toolbar{
+    --background: #eaf1ff;
+}
+
+.form{
+    width: 94vw;
+    padding: 12px;
+    border-radius: 12px;
+    margin: 0 auto 20px auto;
+    background-color: var(--ion-color-primary);
+    color: #fff;
+}
+ion-select,
+.input-bold{
+    padding: 0 16px !important;
+    color: var(--ion-color-primary);
+    background-color: #fff;
+    border-radius: 8px;
+    margin-top: 8px;
+    font-size: 140%;
+}
+ion-select{
+    font-size: 100%;
+    font-weight: bold;
+}
+
+.produk{
+    width: 94vw;
+    margin: auto;
+}
+.skeleton{
+    height: 60px;
+    margin-bottom: 4px;
+}
+
+.total{
+    font-family: 'appbold';
+    color: var(--ion-color-primary);
+    font-size: 130%;
+}
+
+.produk-list .col6{
+    padding: 6px;
+}
+.item{
+    border-radius: 8px;
+    border: 2px dashed transparent;
+    background-color: #fff;
+    padding: 12px;
+    text-align: center;
+}
+.item.active{
+    border-color: var(--ion-color-primary);
+}
+.item .nama{}
+.item .harga{
+    font-family: 'appbold';
+    color: var(--ion-color-primary);
+    font-size: 110%;
+}
+
+.notif{
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 12px;
+    color: var(--ion-color-danger);
+    text-align: center;
+    box-shadow: 0 0 1px 1px #dbdbdb;
+}

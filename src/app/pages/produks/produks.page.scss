@@ -1,0 +1,165 @@
+ion-content,
+ion-toolbar{
+    --background: #eaf1ff;
+}
+.title{
+    text-align: left;
+    padding: 8px 20px;
+    margin: 0;
+    font-size: 100%;
+}
+.harga{
+    text-align: left;
+    padding: 0 20px;
+    margin-top: 8px;
+    color: #1983D4;
+    font-size: 140%;
+    font-family: 'appmedium';
+}
+.staron{
+    color: #ffae00;
+}
+.staroff{
+    color: #bdc3c7;
+}
+.ulasan{
+    text-align: left;
+    padding: 0 20px;
+    margin-bottom: 30px;
+    align-items: center;
+    display: flex;
+    font-family: "appmedium";
+}
+.ulasan .abu{
+    color: #a4a9ac;
+    font-size: 90%;
+}
+.ulasan-item .nama{
+    margin-bottom: 6px;
+    font-family: "appmedium";
+}
+.ulasan-item .tanggal{
+    font-size: 80%;
+    margin-top: 4px;
+}
+.ulasan-item .keterangan{
+    font-size: 90%;
+    margin-top: 10px;
+}
+.ulasan-item .col2 ion-icon{
+    font-size: 48px;
+    color: #bdc3c7;
+}
+.ulasan-item{
+    padding-top: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-top: 1px solid #ececec;
+    align-items: flex-start;
+}
+.formwrap{
+    padding: 10px;
+}
+
+.alert{
+    margin: 0;
+    padding: 5px 0;
+    --min-height: 0;
+}
+.alert p{
+    margin: 0;
+    color: var(--ion-color-danger);
+    font-size: 80%;
+}
+
+.habis{
+    padding: 20px 0;
+    text-align: center;
+    font-size: 80%;
+    color: #c0392b;
+}
+
+.form{
+    box-shadow: 0px 0px 8px #d2dadf;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.destail .col8,
+.destail .col4{
+    padding: 4px 8px;
+}
+.destail{
+    border-bottom: 1px solid vaR(--ion-color-light-shade);
+}
+
+.beli{
+    --background: #2c3e50;
+}
+.seg{
+    width: 94vw;
+    background-color: #fff;
+    margin: auto;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 3vw;
+}
+.deskripsi .ulasan ion-icon{
+    font-size: 100%;
+}
+.deskripsi .ulasan{
+    padding: 0;
+    margin-top: 12px;
+    margin-bottom: 0;
+}
+.segtitle{
+    font-family: "appbold";
+}
+
+.coret{
+    font-size: 80%;
+    text-decoration: line-through;
+    font-style: italic;
+    color: #c0392b;
+}
+
+ion-footer{
+    background: #fff;
+}
+ion-footer .row{
+    padding: 4px;
+}
+.buy-button{
+    padding: 4px;
+}
+.buy-button ion-button{
+    --padding-top: 8px;
+    --padding-bottom: 8px;
+    font-size: inherit;
+}
+.buy-button ion-button.btn-outline-primary{
+    color: var(--ion-color-primary);
+    --background: #fff;
+    border: 2px solid var(--ion-color-primary);
+    --padding-top: 14px;
+    --padding-bottom: 14px;
+}
+
+.label{
+    padding: 0 12px;
+}
+.label .label-digital,
+.label .label-preorder{
+    font-family: "appmedium";
+    font-size: 90%;
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 20px;
+    display: inline-block;
+}
+.label .label-digital{
+    background-color: var(--ion-color-primary);
+}
+.label .label-preorder{
+    background-color: var(--ion-color-warning);
+}

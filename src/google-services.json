@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "147388682516",
+    "project_id": "jadiorder-mobile",
+    "storage_bucket": "jadiorder-mobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:147388682516:android:1dfbcd6a690cd17e917201",
+        "android_client_info": {
+          "package_name": "com.bikinonline.klamben"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "147388682516-8f40nr92ie80brsschk12q74p18riedu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhScV7WiLyVX3uHa4vElZbH-tqAmJqLV4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "147388682516-8f40nr92ie80brsschk12q74p18riedu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

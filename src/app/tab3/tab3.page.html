@@ -1,0 +1,88 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="primary" defaultHref="/tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="dark" class="font-bold">Transaksi Anda</ion-title>
+    <div slot="end" class="toptag" routerLink="/ppoblist">
+      Topup & Tagihan
+    </div>
+  </ion-toolbar>
+  <div class="nav">
+    <div [ngClass]="belumclass" (click)="belumLoad()">
+      <div class="title">Belum Bayar</div>
+      <div class="line"></div>
+    </div>
+    <div [ngClass]="prosesclass" (click)="prosesLoad()">
+      <div class="title">Dalam Proses</div>
+      <div class="line"></div>
+    </div>
+    <div [ngClass]="selesaiclass" (click)="selesaiLoad()">
+      <div class="title">Selesai</div>
+      <div class="line"></div>
+    </div>
+    <div [ngClass]="batalclass" (click)="batalLoad()">
+      <div class="title">Dibatalkan</div>
+      <div class="line"></div>
+    </div>
+  </div>
+</ion-header>
+
+<ion-content [ngClass]="bg">
+  <div class="kosong" *ngIf="items.length == 0">
+    <div class="title">
+      <div class="img-empty"><img src="/assets/img/empty.png" /></div>
+      Belum ada Transaksi
+    </div>
+  </div>
+  <div *ngIf="items.length > 0" class="itemwrap">
+    <div class="item" *ngFor="let i of items">
+      <div class="click mb10" routerLink="/detailpesanan/{{i.id}}">
+        <div class="row">
+          <div class="col3 foto" [ngStyle]="{'background-image':'url('+i.foto+')'}">
+          </div>
+          <div class="col9">
+            <div class="no" *ngIf="status == 0">Payment ID: #{{i.orderid}}</div>
+            <div class="no" *ngIf="status > 0">Order ID: #{{i.orderid}}</div>
+            <div class="titel">{{i.nama}}</div>
+            <div class="variasi">{{i.variasi}}</div>
+            <div class="jumlah">{{i.jml}} x {{i.harga}}</div>
+          </div>
+          <div class="col12 row"> 
+            <div class="col6">Total Bayar:</div>
+            <div class="col6 text-right text-primary"><b>Rp {{i.total}}</b></div>
+          </div>
+        </div>
+      </div>
+      <div class="col12">
+        <div *ngIf="i.status == 1"><ion-icon name="alert-circle" color="warning"></ion-icon> &nbsp;admin sedang menyiapkan pesanan</div>
+        <div *ngIf="i.status == 2"><ion-icon name="rocket" color="warning"></ion-icon> &nbsp;pesanan sedang dikirim</div>
+        <div class="text-left text-primary font-medium" *ngIf="i.digital == 1"><ion-icon name="cloud" color="primary"></ion-icon> &nbsp;produk digital</div>
+      </div> 
+      <div class="col12"> 
+        <ion-button color="primary" *ngIf="i.status == 0" routerLink="/bayarpesanan/{{i.idbayar}}">Bayar Pesanan</ion-button>
+        <ion-button color="danger" *ngIf="i.status == 0" (click)="hapusPesanan(i.id)">Batalkan</ion-button>
+        <ion-button color="danger" *ngIf="i.status == 4" (click)="hapusPesanan(i.id)">Hapus</ion-button>
+        <ion-button color="success" *ngIf="i.status >= 1 && i.status <= 2" (click)="terimaPesanan(i.id)">Terima Pesanan</ion-button>
+        <ion-button color="warning" *ngIf="i.status == 3 && i.review == 0" routerLink="/review/{{i.id}}">Berikan Ulasan</ion-button>
+        <div class="nilai mb20" *ngIf="i.status == 3 && i.review > 0">
+          <ion-icon class="staron" name="star" *ngIf="i.review >= 1"></ion-icon>
+          <ion-icon class="staron" name="star" *ngIf="i.review >= 2"></ion-icon>
+          <ion-icon class="staron" name="star" *ngIf="i.review >= 3"></ion-icon>
+          <ion-icon class="staron" name="star" *ngIf="i.review >= 4"></ion-icon>
+          <ion-icon class="staron" name="star" *ngIf="i.review >= 5"></ion-icon>
+          <ion-icon class="staroff" name="star" *ngIf="i.review < 1"></ion-icon>
+          <ion-icon class="staroff" name="star" *ngIf="i.review < 2"></ion-icon>
+          <ion-icon class="staroff" name="star" *ngIf="i.review < 3"></ion-icon>
+          <ion-icon class="staroff" name="star" *ngIf="i.review < 4"></ion-icon>
+          <ion-icon class="staroff" name="star" *ngIf="i.review < 5"></ion-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content loadingSpinner="circular" loadingText="memuat...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <div class="mt50 mb50 divider"></div>
+</ion-content>

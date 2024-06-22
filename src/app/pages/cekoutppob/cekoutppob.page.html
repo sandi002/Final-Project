@@ -1,0 +1,37 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1" color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="font-bold">Bayar Pesanan</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="item">
+    <div class="head">
+      <div class="row">
+        <div class="col2 text-center">
+          <img src="{{ icon }}" class="icon">
+        </div>
+        <div class="col10">
+          <div class="kategori">{{ kategori }}</div>
+          <div class="tgl">#{{ invoice }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="nama">{{nama}}</div>
+    <div class="nomer">{{nomer}}</div>
+    <div class="total-title">Total Harga</div>
+    <div class="total">Rp {{bayar|number:'':'id'}}</div>
+    <div class="koin" *ngIf="status == 0 && saldokoin > 0">
+      <ion-toggle labelPlacement="end" [(ngModel)]="koin" value="1">Gunakan Koin (koin {{ saldokoin|number:'':'id' }})</ion-toggle>
+    </div>
+    <div class="foot">
+      <ion-button *ngIf="status == 0" expand="full" color="success" (click)="bayarSekarang()">Bayar Sekarang</ion-button>
+      <div class="status orange" *ngIf="status == 1"><fa-icon icon="clock"></fa-icon> &nbsp;Sedang diproses</div>
+      <div class="status green" *ngIf="status == 2"><fa-icon icon="check"></fa-icon> &nbsp;Sukses</div>
+      <div class="status red" *ngIf="status == 3"><fa-icon icon="times"></fa-icon> &nbsp;Dibatalkan</div>
+    </div>
+  </div>
+</ion-content>

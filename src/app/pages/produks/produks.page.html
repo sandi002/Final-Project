@@ -1,0 +1,183 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="primary" defaultHref="/tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="dark">{{title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <swiper-container class="slider" #slides [pager]="true" [slidesPerView]="1" [autoplay]="true" [spaceBetween]="0">
+      <swiper-slide *ngFor="let s of sliders">
+          <img src="{{s.foto}}" class="img" />
+      </swiper-slide>
+      <swiper-slide *ngIf="sliders.length == 0">
+          <img src="/assets/img/belumadapromo.png">
+      </swiper-slide>
+      <swiper-slide *ngIf="sliders.length == 0">
+          <img src="/assets/img/belumadapromo.png">
+      </swiper-slide>
+      <swiper-slide *ngIf="sliders.length == 0">
+          <img src="/assets/img/belumadapromo.png">
+      </swiper-slide>
+      <swiper-slide *ngIf="sliders.length == 0">
+          <img src="/assets/img/belumadapromo.png">
+      </swiper-slide>
+      <swiper-slide *ngIf="sliders.length == 0">
+          <img src="/assets/img/belumadapromo.png">
+      </swiper-slide>
+  </swiper-container>
+  <div class="harga">
+    {{harga}}
+  </div>
+  <div class="title">
+    {{title}}
+  </div>
+  <div class="ulasan">
+    <ion-icon class="staron" name="star" *ngIf="nilai >= 1"></ion-icon>
+    <ion-icon class="staron" name="star" *ngIf="nilai >= 2"></ion-icon>
+    <ion-icon class="staron" name="star" *ngIf="nilai >= 3"></ion-icon>
+    <ion-icon class="staron" name="star" *ngIf="nilai >= 4"></ion-icon>
+    <ion-icon class="staron" name="star" *ngIf="nilai >= 5"></ion-icon>
+    <ion-icon class="staroff" name="star" *ngIf="nilai < 1"></ion-icon>
+    <ion-icon class="staroff" name="star" *ngIf="nilai < 2"></ion-icon>
+    <ion-icon class="staroff" name="star" *ngIf="nilai < 3"></ion-icon>
+    <ion-icon class="staroff" name="star" *ngIf="nilai < 4"></ion-icon>
+    <ion-icon class="staroff" name="star" *ngIf="nilai < 5"></ion-icon>
+    &nbsp; {{nilai}} &nbsp; | &nbsp; <small>{{totulasan}} Ulasan</small>
+  </div>
+  <div class="label">
+    <div class="label-preorder" *ngIf="po == 1"><ion-icon name="time"></ion-icon>&nbsp;PRE ORDER: {{pohari}} hari</div>
+    <div class="label-digital" *ngIf="digital == 1"><ion-icon name="cloud"></ion-icon>&nbsp;PRODUK DIGITAL</div>
+  </div>
+  <!--
+  <div class="seg">
+    <div class="segtitle">BELI PRODUK INI</div>
+    <div class="habis" *ngIf="stoknya == 0">
+      mohon maaf, produk telah habis terjual
+    </div>
+    <form [formGroup]="inputForm" class="formwrap" *ngIf="stoknya != 0">
+      <ion-input type="hidden" formControlName="idproduk"></ion-input>
+      <ion-item class="form" *ngIf="variasea != 0">
+        <ion-label position="floating">Varian</ion-label>
+        <ion-select placeholder="pilih varian" interface="popover" formControlName="warna" (ionChange)="getSize()">
+          <ion-select-option *ngFor="let v of warnas" value="{{v.id}}">{{v.nama}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <div class="alert" *ngIf="!inputForm.controls.warna.valid  && (inputForm.controls.warna.dirty || inputForm.controls.warna.touched || submitAttempt)">
+          <p>pilih varian.</p>
+      </div>
+      <ion-item class="form" *ngIf="variasea != 0">
+        <ion-label position="floating">Sub Varian</ion-label>
+        <ion-select placeholder="pilih sub varian" interface="popover" formControlName="variasi">
+          <ion-select-option *ngFor="let v of sizes" value="{{v.id}}">{{v.nama}} (stok: {{v.stok}})</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <div class="alert" *ngIf="!inputForm.controls.variasi.valid  && (inputForm.controls.variasi.dirty || inputForm.controls.variasi.touched || submitAttempt)">
+          <p>pilih sub varian.</p>
+      </div>
+      <div class="row">
+        <ion-item class="form col6">
+          <ion-label position="floating">Jumlah Barang</ion-label>
+          <!- -<ion-icon name="remove"></ion-icon>- ->
+          <ion-input formControlName="jumlah" type="tel" pattern="[0-9]*"></ion-input>
+          <!- -<ion-icon name="add"></ion-icon>- ->
+        </ion-item>
+        <div class="col6">
+          <span class="stok" *ngIf="stok">stok: <b>{{stok}}</b></span>
+        </div>
+      </div>
+      <ion-item class="form">
+        <ion-label position="floating">Catatan Tambahan</ion-label>
+        <ion-textarea rows="2" formControlName="keterangan"></ion-textarea>
+      </ion-item>
+      <div class="divider"></div>
+      <ion-button *ngIf="login" class="beli mb10" expand="full" (click)="beliproduk()">TAMBAH KE KERANJANG</ion-button>
+      <ion-button *ngIf="!login" class="beli" expand="full" routerLink="/login">BELI PRODUK</ion-button>
+      <ion-button color="success" expand="full" (click)="wasap()">BELI VIA WHATSAPP</ion-button>
+    </form>
+  </div>
+-->
+  <div class="seg deskripsi">
+    <div class="segtitle mb20">Detail Produk</div>
+    <div class="deskripsi-text bungkus mb20">
+      <div class="row destail">
+        <div class="col4">Kategori</div>
+        <div class="col8">{{kategori}}</div>
+      </div>
+      <div class="row destail">
+        <div class="col4">Stok</div>
+        <div class="col8">{{stoknya}}</div>
+      </div>
+      <div class="row destail">
+        <div class="col4">Berat</div>
+        <div class="col8">{{berat}} gram</div>
+      </div>
+      <div class="row destail">
+        <div class="col4">Min. Order</div>
+        <div class="col8">{{minorder}}</div>
+      </div>
+    </div>
+    <div class="segtitle mb20">Deskripsi Produk</div>
+    <div class="deskripsi-text">
+      <span [innerHtml]="deskripsi"></span>
+    </div>
+  </div>
+  <div class="seg deskripsi">
+    <div class="segtitle">Ulasan Produk</div>
+    <div class="ulasan">
+      <ion-icon class="staron" name="star" *ngIf="nilai >= 1"></ion-icon>
+      <ion-icon class="staron" name="star" *ngIf="nilai >= 2"></ion-icon>
+      <ion-icon class="staron" name="star" *ngIf="nilai >= 3"></ion-icon>
+      <ion-icon class="staron" name="star" *ngIf="nilai >= 4"></ion-icon>
+      <ion-icon class="staron" name="star" *ngIf="nilai >= 5"></ion-icon>
+      <ion-icon class="staroff" name="star" *ngIf="nilai < 1"></ion-icon>
+      <ion-icon class="staroff" name="star" *ngIf="nilai < 2"></ion-icon>
+      <ion-icon class="staroff" name="star" *ngIf="nilai < 3"></ion-icon>
+      <ion-icon class="staroff" name="star" *ngIf="nilai < 4"></ion-icon>
+      <ion-icon class="staroff" name="star" *ngIf="nilai < 5"></ion-icon>
+      &nbsp; {{nilai}}/5 &nbsp; <span class="abu">({{totulasan}} Ulasan)</span>
+    </div>
+    <hr/>
+    <div class="ulasan-pembeli">
+      <div class="ulasan-item row" *ngIf="ulasan.length == 0">
+        <small><i>Belum ada ulasan.</i></small>
+      </div>
+      <div class="ulasan-item row" *ngFor="let u of ulasan">
+        <div class="col2">
+          <ion-icon name="person-circle"></ion-icon>
+        </div>
+        <div class="col9">
+          <div class="nama">{{u.nama}}</div>
+          <ion-icon class="staron" name="star" *ngIf="u.nilai >= 1"></ion-icon>
+          <ion-icon class="staron" name="star" *ngIf="u.nilai >= 2"></ion-icon>
+          <ion-icon class="staron" name="star" *ngIf="u.nilai >= 3"></ion-icon>
+          <ion-icon class="staron" name="star" *ngIf="u.nilai >= 4"></ion-icon>
+          <ion-icon class="staron" name="star" *ngIf="u.nilai >= 5"></ion-icon>
+          <ion-icon class="staroff" name="star" *ngIf="u.nilai < 1"></ion-icon>
+          <ion-icon class="staroff" name="star" *ngIf="u.nilai < 2"></ion-icon>
+          <ion-icon class="staroff" name="star" *ngIf="u.nilai < 3"></ion-icon>
+          <ion-icon class="staroff" name="star" *ngIf="u.nilai < 4"></ion-icon>
+          <ion-icon class="staroff" name="star" *ngIf="u.nilai < 5"></ion-icon>
+          <div class="keterangan">{{u.keterangan}}</div>
+          <div class="tanggal">{{u.tgl}}</div>
+        </div>
+        <div class="col1">
+          <fa-icon icon="triangle-exclamation" (click)="lapor(u.id)" class="text-danger"></fa-icon>
+        </div>
+      </div>    
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <div class="buy-button row">
+    <div class="col3">
+      <ion-button color="success" style="height:46px" expand="full" (click)="tanyaAdmin()"><ion-icon name="chatbubble-ellipses"></ion-icon></ion-button>
+    </div>
+    <div class="col9">
+      <ion-button color="primary" style="height:46px" expand="full" (click)="tambahKeranjang()">Tambah ke Keranjang</ion-button>
+    </div>
+  </div>
+</ion-footer>

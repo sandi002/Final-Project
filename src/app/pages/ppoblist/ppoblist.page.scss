@@ -1,0 +1,69 @@
+ion-content,
+ion-toolbar{
+    --background: #eaf1ff;
+}
+
+.item{
+    width: 94vw;
+    margin: 1vw auto 3vw auto;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 0 1px 1px #dbdbdb;
+}
+.item .judul{
+    font-family: 'appmedium';
+    color: var(--ion-color-primary);
+}
+.item .icon{
+    max-width: 100%;
+    max-height: 40px;
+}
+.item .kategori{
+    font-size: 90%;
+    font-family: 'appbold';
+}
+.item .tgl{
+    font-size: 80%;
+}
+.item .status{
+    font-size: 75%;
+    padding: 4px 8px;
+    border-radius: 8px;
+    background-color: var(--ion-color-light-shade);
+    text-align: center;
+}
+.item .status.red{
+    color: #fff;
+    background-color: var(--ion-color-danger-tint);
+}
+.item .status.green{
+    color: #fff;
+    background-color: var(--ion-color-success);
+}
+.item .status.orange{
+    color: #fff;
+    background-color: var(--ion-color-warning-tint);
+}
+.item .head{
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--ion-color-light-shade);
+    margin-bottom: 8px;
+}
+.item .nama{
+    font-family: 'appbold';
+}
+.item .nomer{
+    margin-bottom: 12px;
+    font-size: 95%;
+}
+.item .total-title{
+    font-size: 85%;
+}
+.item .total{
+    font-family: 'appbold';
+}
+.item ion-button{
+    --padding-top: 4px;
+    --padding-bottom: 4px;
+}

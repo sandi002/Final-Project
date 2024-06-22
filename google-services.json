@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "165343867505",
+    "project_id": "jadiordermobile",
+    "storage_bucket": "jadiordermobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:165343867505:android:0c7724403777f34c3d61d0",
+        "android_client_info": {
+          "package_name": "com.jadiordermobile.id"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCN0N9WtbhxMf4ss8ldkxX5ranTkctAzU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

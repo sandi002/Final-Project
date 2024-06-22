@@ -1,0 +1,22 @@
+.form{
+    margin-bottom: 20px;
+}
+
+.jmlbtn ion-input{
+    text-align: center;
+    background-color: #f4f4f4;
+    --padding-top: 4px;
+    --padding-bottom: 4px;
+    font-family: "appbold";
+}
+.jmlbtn ion-button{
+    margin-inline: 0;
+    --padding-top: 6px;
+    --padding-bottom: 6px;
+}
+ion-item{
+    border: 1px solid var(--ion-color-primary);
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-radius: 6px;
+}

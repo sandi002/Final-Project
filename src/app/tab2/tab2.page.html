@@ -1,0 +1,115 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="primary" defaultHref="/tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="font-bold">Keranjang Belanja</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="kosong" *ngIf="items.length == 0 && digital.length == 0">
+    <div class="title">
+      <div class="img-empty"><img src="/assets/img/empty.png" /></div>
+      Belum ada Transaksi
+    </div>
+  </div>
+  <div class="segmen" *ngIf="items.length > 0 && digital.length > 0">
+    <div class="seg-title">Produk Fisik</div>
+    <div class="seg-line"></div>
+  </div>
+  <ion-list *ngIf="items" lines="none">
+    <ion-item class="items" lines="none" *ngFor="let i of items;index as index">
+      <div class="row">
+        <div class="col3 foto" [ngStyle]="{'background-image':'url('+i.foto+')'}" routerLink="/produks/{{i.idproduk}}"></div>
+        <div class="col9 right">
+          <div class="title">{{i.nama}}</div>
+          <div class="variasi">{{i.variasi}}</div>
+          <div class="gudang"><fa-icon icon="shipping-fast"></fa-icon> &nbsp;{{i.gudang}}</div>
+          <div class="jumlah" *ngIf="i.stok >= i.jumlah">{{i.harga}}</div>
+          <div class="jumlah red" *ngIf="i.jumlah > i.stok">stok habis</div>
+          <div class="variasi">{{i.keterangan}}</div>
+          <div class="row">
+            <div class="col6">
+              <div class="row jmlbtn">
+                <div class="col3">
+                  <ion-button color="primary" expand="full"><fa-icon [icon]="minus" (click)="kurang(index)"></fa-icon></ion-button>
+                </div>
+                <div class="col6">
+                  <ion-input type="number" [(ngModel)]="i.jumlah" readonly></ion-input>
+                </div>
+                <div class="col3">
+                  <ion-button color="primary" expand="full"><fa-icon [icon]="plus" (click)="tambah(index)"></fa-icon></ion-button>
+                </div>
+              </div>
+            </div>
+            <div class="col6">
+              <div class="icon red" (click)="hapusKeranjang(i.id)">
+                <fa-icon [icon]="trash" class="red"></fa-icon> hapus
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
+  <div class="notif" *ngIf="notifgudang">
+    apabila barang yang ada di keranjang berasal dari lebih banyak gudang, maka yang akan diproses adalah sesuai gudang dari produk di keranjang paling atas
+  </div>
+  <div class="btnwrap row mb20" *ngIf="items.length > 0">
+    <div class="col6">
+      <div class="totaltitel">Total Harga</div>
+      <div class="total">Rp {{total}}</div>
+    </div>
+    <div class="col6">
+      <ion-button expand="full" color="primary" class="cekout" routerLink="/cekout">Bayar Sekarang</ion-button>
+    </div>
+  </div>
+  <div class="segmen" *ngIf="digital.length > 0">
+    <div class="seg-title">Produk Digital</div>
+    <div class="seg-line"></div>
+  </div>
+  <ion-list *ngIf="digital" lines="none">
+    <ion-item class="items" lines="none" *ngFor="let d of digital;index as index">
+      <div class="row">
+        <div class="col3 foto" [ngStyle]="{'background-image':'url('+d.foto+')'}" routerLink="/produks/{{d.idproduk}}"></div>
+        <div class="col9 right">
+          <div class="title">{{d.nama}}</div>
+          <div class="variasi">{{d.variasi}}</div>
+          <div class="jumlah" *ngIf="d.stok >= d.jumlah">{{d.harga}}</div>
+          <div class="jumlah red" *ngIf="d.jumlah > d.stok">stok habis</div>
+          <div class="variasi">{{d.keterangan}}</div>
+          <div class="row">
+            <div class="col6">
+              <div class="row jmlbtn">
+                <div class="col3">
+                  <ion-button color="primary" expand="full"><fa-icon [icon]="minus" (click)="kurangDigital(index)"></fa-icon></ion-button>
+                </div>
+                <div class="col6">
+                  <ion-input type="number" [(ngModel)]="d.jumlah" readonly></ion-input>
+                </div>
+                <div class="col3">
+                  <ion-button color="primary" expand="full"><fa-icon [icon]="plus" (click)="tambahDigital(index)"></fa-icon></ion-button>
+                </div>
+              </div>
+            </div>
+            <div class="col6">
+              <div class="icon red" (click)="hapusKeranjang(d.id)">
+                <fa-icon [icon]="trash" class="red"></fa-icon> hapus
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
+  <div class="btnwrap row mb50" *ngIf="digital.length > 0">
+    <div class="col6 mb40">
+      <div class="totaltitel">Total Harga</div>
+      <div class="total">Rp {{totaldigital}}</div>
+    </div>
+    <div class="col6 mb40">
+      <ion-button expand="full" color="primary" class="cekout" routerLink="/cekoutdigital">Bayar Sekarang</ion-button>
+    </div>
+  </div>
+</ion-content>

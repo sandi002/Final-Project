@@ -1,0 +1,42 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="dark">Hasil untuk "{{cari}}"</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="newproduct">
+    <div class="row">
+      <div class="col6" *ngFor="let p of produk">
+        <div class="prod-wrap">
+          <div class="img" [ngStyle]="{'background-image':'url('+p.foto+')'}" (click)="loadProduk(p.id)"></div>
+          <div class="prod-title" (click)="loadProduk(p.id)">{{p.nama}}</div>
+          <div class="prod-label danger" *ngIf="p.po == 1">PREORDER</div>
+          <div class="prod-label" *ngIf="p.digital == 1">DIGITAL</div>
+          <div class="prod-title mb10" (click)="loadProduk(p.id)">stok: {{p.stok}}</div>
+          <div class="prod-harga" (click)="loadProduk(p.id)">
+            <i *ngIf="p.hargadiskon != null">{{p.hargadiskon}}&nbsp;</i>&nbsp;
+            <span *ngIf="p.hargadiskon != null">{{p.diskon}}%</span><br/>
+            {{p.harga}}
+          </div>
+          <div class="prod-uls">
+            <ion-button color="primary" expand="full" (click)="tambahKeranjang(p.id)">Beli Sekarang</ion-button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="kosong" *ngIf="kosong">
+      Belum ada produk<br/>
+      Silahkan hubungi admin melalui Live Chat untuk 
+      menanyakan informasi produk.
+    </div>
+  </div>
+  <ion-infinite-scroll threshold="10px" (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content loadingSpinner="circular" loadingText="memuat...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <div class="mt50 mb50 divider"></div>
+</ion-content>

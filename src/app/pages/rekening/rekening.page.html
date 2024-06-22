@@ -1,0 +1,32 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="primary" routerLink="/tabs/tab4" defaultHref="/tabs/tab4"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="bold">Rekening Saya</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="alamat row" *ngFor="let res of hasil" (click)="pilihaksi(res.id)">
+    <div class="col10">
+      <div class="judul">BANK {{res.bank}}</div>
+      <div class="nama">{{res.norek}}</div>
+      <div>a/n <span class="nama">{{res.atasnama}}</span></div>
+    </div>
+    <div class="col2">
+      <ion-icon color="primary" name="ellipsis-vertical"></ion-icon>
+    </div>
+  </div>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content loadingSpinner="circular" loadingText="memuat...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <div class="mt50 mb50 divider"></div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <div class="btnwrap">
+    <ion-button expand="full" color="primary" routerLink="/editrekening/0" class="btn">Tambah Rekening Baru</ion-button>
+  </div>
+</ion-footer>

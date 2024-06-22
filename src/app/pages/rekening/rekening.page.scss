@@ -1,0 +1,40 @@
+ion-toolbar,
+ion-content{
+    --background: #eaf1ff;
+}
+.alamat{
+    padding: 16px;
+    background-color: #fff;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    box-shadow: 0px 0px 3px #bdc3c7;
+}
+.alamat .judul{
+    text-transform: uppercase;
+    font-family: "appmedium";
+    margin-bottom: 4px;
+}
+.alamat .nama{
+    text-transform: uppercase;
+    font-family: "appmedium";
+    margin-bottom: 4px;
+}
+.alamat .lengkap{
+    font-size: 90%;
+    font-family: "appmedium";
+    margin-bottom: 4px;
+}
+.alamat .col2{
+    text-align: right;
+    font-size: 180%;
+}
+
+.notif{
+    padding: 4px 8px;
+    background: #ffd32a;
+    color: #2c3e50;
+    font-size: 70%;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    box-shadow: 0px 0px 3px #bdc3c7;
+}

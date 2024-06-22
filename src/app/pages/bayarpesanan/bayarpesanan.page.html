@@ -1,0 +1,134 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab3" color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="bold">Detail Pembayaran</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="wrap">
+    <div class="total">
+      <div class="text">Total Pembayaran</div>
+      <div class="inv" *ngIf="total">Rp {{total}}</div>
+      <div class="inv" *ngIf="!total">Rp 0</div>
+      <div class="notif" *ngIf="metode != 3">
+        Bayar pesanan sesuai dengan jumlah yang tertera diatas.
+      </div>
+      <div class="info" *ngIf="metode != 1">
+        <div class="text">Batas Waktu Pembayaran</div>
+        <span class="kadal text-danger">{{kadaluarsa}}</span>
+      </div>
+      <div class="info batas" *ngIf="metode != 1">
+        Pembayaran anda dicek dalam waktu 24 jam setelah konfirmasi pembayaran. Diwajibkan untuk membayar sesuai total pembayaran sebelum batas waktu berakhir.
+      </div>
+    </div>
+    <div class="pilihmetode" *ngIf="midtrans_cek != null">
+      <div [innerHTML]="midtrans_cek" class="mb-30"></div>
+      <ion-button class="mt30" color="primary" *ngIf="midtrans_cek_status != 'success' && midtrans_cek_status != 'settlement'" expand="full" (click)="ubahPembayaran()">UBAH PEMBAYARAN</ion-button>
+    </div>
+    <div class="pilihmetode" *ngIf="metode == 0">
+      <div class="text mb10">
+        Pilih Metode Pembayaran:
+      </div>
+      <div class="metode row">
+        <div class="col6" *ngIf="payment_midtrans == 1 || payment_ipaymu == 1">
+          <div class="label" *ngIf="jenis == 1"><ion-icon name="checkmark-circle"></ion-icon></div>
+          <div class="metode-item aktif" *ngIf="jenis == 1">OTOMATIS</div>
+          <div class="metode-item" *ngIf="jenis != 1" (click)="otomatis()">OTOMATIS</div>
+        </div>
+        <div class="col6" *ngIf="payment_transfer == 1">
+          <div class="label" *ngIf="jenis == 2"><ion-icon name="checkmark-circle"></ion-icon></div>
+          <div class="metode-item aktif" *ngIf="jenis == 2">MANUAL</div>
+          <div class="metode-item" *ngIf="jenis != 2" (click)="manual()">MANUAL</div>
+        </div>
+      </div>
+    </div>
+    <div class="otomatis" *ngIf="metode == 4 && midtrans_cek == null">
+      <div class="text mb10" *ngIf="tipe == ''">
+        Berikut channel yg didukung untuk pembayaran otomatis:
+      </div>
+      <div class="img">
+        <img src="../assets/img/ipaymu.png" />
+      </div>
+      <ion-button *ngIf="metode == 4 && payment_midtrans == 1" size="large" color="primary" expand="full" routerLink="/bayarprosesmidtrans/{{idbayar}}">BAYAR SEKARANG</ion-button>
+    </div>
+    <div class="otomatis" *ngIf="metode == 3">
+      <div *ngIf="tripay_ref != ''">
+        <div class="font-bold mb20">Informasi Pembayaran Pesanan</div>
+        <div class="">Jumlah Pembayaran</div>
+        <div class="mb10 font-bold text-primary tripay-info">Rp {{tripay.amount|number:'':'es'}}</div>
+        <div class="mb4">Metode Pembayaran</div>
+        <div class="mb10 row">
+          <div class="col4"><img src="{{tripayoptionslogo}}" /></div>
+          <div class="col8 pl"><div class="text-primary font-medium">{{tripayoptions}}</div></div>
+        </div>
+        <div class="" *ngIf="tripay_metode != 'QRIS'">Kode Pembayaran/Nomor Virtual Account</div>
+        <div class="mb10 font-bold text-primary tripay-info" *ngIf="tripay_metode != 'QRIS'" (click)="copyVA()">{{tripay.pay_code}} &nbsp; <small><fa-icon [icon]='copy'></fa-icon> copy</small></div>
+        <!--
+        <div class="" >Waktu Jatuh Tempo</div>
+        <div class="mb10 font-bold text-danger">{{tripay.pay_code}}</div>
+        -->
+        <div class="mb20" *ngIf="tripay_metode == 'QRIS'"></div>
+        <div class="mb10 text-center" *ngIf="tripay_metode == 'QRIS'">Scan kode QR untuk menyelesaikan pembayaran</div>
+        <div class="font-bold text-primary tripay-info text-center qrcode" *ngIf="tripay_metode == 'QRIS'"><img src="{{tripay.qr_url}}" class="col8"></div>
+      </div>
+      <div *ngIf="tripay_ref == ''" class="mb50">
+        <div class="font-bold mb20">Pilih Metode Pembayaran</div>
+        <div class="row payment-button-wrap mb20">
+          <div class="col6" *ngFor="let i of tripay_channel">
+            <div [ngClass]="metode_bayar == i.kode ? 'payment-button active' : 'payment-button'" (click)="pilihMetode(i.kode)">
+              <fa-icon [icon]="cek"></fa-icon>
+              <div class="img"><img src="{{i.logo}}" /></div>
+              <div class="text">{{i.nama}}</div>
+            </div>
+          </div>
+        </div>
+        <div class="padding">
+          <ion-button color="primary" expand="full" size="large" (click)="bayarTripay()">LANJUT PEMBAYARAN </ion-button>
+        </div>
+      </div>
+    </div>
+    <div class="transfer" *ngIf="metode == 2 && bukti != ''">
+      <div class="text mb20">
+        Bukti Transfer
+      </div>
+      <div class="bukti">
+        <img src="{{bukti}}" />
+      </div>
+    </div>
+    <div class="transfer" *ngIf="metode == 2">
+      <div class="text mb10">
+        Tujuan Pembayaran
+      </div>
+      <div class="rekening" *ngFor="let r of rekening">
+        <div class="bank">{{r.bank}} Cab. {{r.kcp}}</div>
+        <div class="atasnama">a/n {{r.atasnama}}</div>
+        <div class="norek">{{r.norek}}</div>
+      </div>
+      <div class="text mb30">
+        <b>PENTING:</b>
+        <ul class="list">
+          <li>Mohon lakukan pembayaran dalam 1x24 jam</li>
+          <li>Sistem akan otomatis mendeteksi apabila pembayaran sudah masuk</li>
+          <li>Apabila sudah transfer dan status pembayaran belum berubah, mohon konfirmasi pembayaran</li>
+          <li>Pesanan akan dibatalkan secara otomatis jika Anda tidak melakukan pembayaran</li>
+        </ul>
+      </div>
+      <ion-button color="primary" expand="full" (click)="presentActionSheet()">UPLOAD BUKTI TRANSFER</ion-button>
+      <ion-button color="danger" expand="full" routerLink="/tabs/tab3">BAYAR NANTI</ion-button>
+    </div>
+    <div class="transfer" *ngIf="metode == 1">
+      <div class="text mb30">
+        <b>INFORMASI PEMBAYARAN:</b>
+        <ul class="list">
+          <li>Mohon lakukan pembayaran sesuai jumlah yang tertera diatas kepada petugas/kurir kami</li>
+          <li>Pesanan akan dibatalkan jika Anda tidak melakukan pembayaran</li>
+        </ul>
+      </div>
+      <ion-button color="primary" expand="full" routerLink="/tabs/tab3">OKE, SAYA MENGERTI</ion-button>
+    </div>
+  </div>
+</ion-content>

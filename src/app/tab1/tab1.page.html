@@ -1,0 +1,219 @@
+<!--
+  <ion-header class="ion-no-border">
+  <div class="row top">
+    <div class="col6">
+      <img src="/assets/logo.png" alt="logo" />
+    </div>
+    <div class="col6">
+      <div class="chatbtn" (click)="presentModal()">
+        <ion-icon class="chaticon text-primary" name="chatbubbles"></ion-icon>
+        <div *ngIf="notif != 0" class="notif">{{notif}}</div>
+      </div>
+    </div>
+  </div>
+</ion-header>
+  -->
+<ion-content>
+  <!--
+  <div class="row">
+    <div class="col6 logo">
+      <img src="/assets/logo.png" alt="logo" />
+    </div>
+    <div class="col6">
+      <div class="chatbtn" *ngIf="login" routerLink="/chat">
+        <ion-icon class="chaticon" name="chatboxes"></ion-icon>
+        <div *ngIf="notif != 0" class="notif">{{notif}}</div>
+      </div>
+      <div class="chatbtn" *ngIf="!login" routerLink="/login">
+        <ion-icon class="chaticon" name="chatboxes"></ion-icon>
+      </div>
+    </div>
+  </div>
+  -->
+  <div class="topgrup bg-utama">
+    <div class="row search mb10">
+      <div class="col11">
+        <input placeholder="Cari Produk" [(ngModel)]="cariText" (change)="cariProduk()" />
+      </div>
+      <div class="col1 text-primary">
+        <fa-icon icon="search"></fa-icon>
+      </div>
+    </div>
+  </div>
+  <swiper-container [modules]="swiperModules" [autoplay]="true" [pager]="true" [slidesPerView]="1" [spaceBetween]="0" class="sliderpromo bg-utama-bottom">
+      <swiper-slide *ngFor="let s of slider">
+          <img src="{{s.foto}}" class="img" />
+      </swiper-slide>
+      <swiper-slide *ngIf="slider.length == 0">
+          <img src="/assets/img/belumadapromo.png" class="img">
+      </swiper-slide>
+  </swiper-container>
+  <div class="mb20" *ngIf="usrid == 0"></div>
+  <div class="saldo-wrap bg-utama-round" *ngIf="usrid > 0">
+    <div class="saldo" routerLink="/saldo">
+      <div class="row">
+        <div class="col7 border-right">
+          <div class="text-primary"><fa-icon icon="wallet"></fa-icon> Rp {{saldo|number:'':'es'}}</div>
+          <div class="saldo-title">Isi Saldo</div>
+        </div>
+        <div class="col5">
+          <div class="text-warning"><fa-icon icon="coins"></fa-icon> {{koin|number:'':'es'}}</div>
+          <div class="saldo-title">Koin tersedia</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="titel-small" *ngIf="kategorippob.length > 0">Top Up & Tagihan</div>
+  <swiper-container [modules]="swiperModules" *ngIf="kategorippob.length > 0" [autoplay]="false" [pager]="false" [slidesPerView]="2.5" [spaceBetween]="8" class="slidercat">
+    <swiper-slide class="catitem">
+      <div class="row" routerLink="/kategorippob">
+        <div class="col3"><div class="foto"><img src="/assets/all.png" /></div></div>
+        <div class="col9"><div class="cat-title">Semua Produk</div></div>
+      </div>
+    </swiper-slide>
+    <swiper-slide class="catitem" *ngFor="let r of kategorippob">
+      <div class="row" routerLink="/ppobtopup/{{r.kode}}" *ngIf="r.tipe == 1">
+        <div class="col3"><div class="foto"><img src="{{r.foto}}" /></div></div>
+        <div class="col9"><div class="cat-title">{{r.nama}}</div></div>
+      </div>
+      <div class="row" routerLink="/ppobtagihan/{{r.kode}}" *ngIf="r.tipe == 2">
+        <div class="col3"><div class="foto"><img src="{{r.foto}}" /></div></div>
+        <div class="col9"><div class="cat-title">{{r.nama}}</div></div>
+      </div>
+    </swiper-slide>
+  </swiper-container>
+  <div class="row titel">
+    <div class="col8 font-bold"><fa-icon icon="arrow-trend-up" class="text-primary"></fa-icon> &nbsp;Produk Terbaru</div>
+    <div class="col4 text-primary" style="font-size: 70%;text-align: right;" routerLink="/produklist">Lihat Semua</div>
+  </div>
+  <div class="newproduct home">
+    <swiper-container [modules]="swiperModules" [autoplay]="false" [pager]="true" [slidesPerView]="2.2" [spaceBetween]="12" class="sliderproduk">
+      <swiper-slide class="w100" *ngFor="let p of produk">
+        <div class="prod-wrap">
+          <div class="img" [ngStyle]="{'background-image':'url('+p.foto+')'}" (click)="loadProduk(p.id)"></div>
+          <div class="prod-cat" (click)="loadProduk(p.id)">{{p.kategori}}</div>
+          <div class="prod-title" (click)="loadProduk(p.id)">{{p.nama}}</div>
+          <div class="prod-label danger" *ngIf="p.po == 1">PREORDER</div>
+          <div class="prod-label" *ngIf="p.digital == 1">DIGITAL</div>
+          <div class="prod-harga" (click)="loadProduk(p.id)">
+            <i *ngIf="p.hargadiskon != null">{{p.hargadiskon}}&nbsp;</i>&nbsp;
+            <span *ngIf="p.hargadiskon != null">{{p.diskon}}%</span><br/>
+            {{p.harga}}
+          </div>
+          <div class="prod-uls">
+            <ion-button color="primary" expand="full" (click)="tambahKeranjang(p.id)">Beli Sekarang</ion-button>
+          </div>
+        </div>
+      </swiper-slide>
+    </swiper-container>
+  </div>
+  <div class="titel-small">Kategori Produk</div>
+  <swiper-container [modules]="swiperModules" [autoplay]="false" [pager]="false" [slidesPerView]="2.25" [spaceBetween]="8" class="slidercat" pager="false">
+    <swiper-slide class="catitem">
+      <div class="row" routerLink="/kategorilist">
+        <div class="col3"><div class="foto"><img src="/assets/all.png" /></div></div>
+        <div class="col9"><div class="cat-title">Semua Kategori</div></div>
+      </div>
+    </swiper-slide>
+    <swiper-slide class="catitem" *ngFor="let r of kategori">
+      <div class="row" routerLink="/kategori/{{r.id}}">
+        <div class="col3"><div class="foto"><img src="{{r.foto}}" /></div></div>
+        <div class="col9"><div class="cat-title">{{r.nama}}</div></div>
+      </div>
+    </swiper-slide>
+  </swiper-container>
+  <div class="row titel" *ngIf="promo.length > 0">
+    <div class="col6 font-bold"><ion-icon name="flame" color="warning"></ion-icon>&nbsp;Hot Promo</div>
+  </div>
+  <swiper-container [modules]="swiperModules" [autoplay]="true" [pager]="false" [slidesPerView]="1" [spaceBetween]="10" class="sliderpromo ion-padding" *ngIf="promo.length > 0">
+      <swiper-slide *ngFor="let s of promo" class="promo">
+        <a href="{{s.link}}"><img src="{{s.foto}}" class="img"/></a>
+      </swiper-slide>
+  </swiper-container>
+  <div class="row titel" *ngIf="produkd.length > 1">
+    <div class="col8 font-bold"><ion-icon name="cloud" color="primary"></ion-icon>&nbsp;Produk Digital</div>
+    <div class="col4 text-primary" style="font-size: 70%;text-align: right;" routerLink="/produklist">Lihat Semua</div>
+  </div>
+  <div class="newproduct home" *ngIf="produkd.length > 1">
+    <swiper-container [modules]="swiperModules" [autoplay]="false" [pager]="true" [slidesPerView]="2.2" [spaceBetween]="12" class="sliderproduk">
+      <swiper-slide *ngFor="let p of produkd">
+        <div class="prod-wrap">
+          <div class="img" [ngStyle]="{'background-image':'url('+p.foto+')'}" (click)="loadProduk(p.id)"></div>
+          <div class="prod-cat" (click)="loadProduk(p.id)">{{p.kategori}}</div>
+          <div class="prod-title" (click)="loadProduk(p.id)">{{p.nama}}</div>
+          <div class="prod-label danger" *ngIf="p.po == 1">PREORDER</div>
+          <div class="prod-label" *ngIf="p.digital == 1">DIGITAL</div>
+          <div class="prod-harga" (click)="loadProduk(p.id)">
+            <i *ngIf="p.hargadiskon != null">{{p.hargadiskon}}&nbsp;</i>&nbsp;
+            <span *ngIf="p.hargadiskon != null">{{p.diskon}}%</span><br/>
+            {{p.harga}}
+          </div>
+          <div class="prod-uls">
+            <ion-button color="primary" expand="full" (click)="tambahKeranjang(p.id)">Beli Sekarang</ion-button>
+          </div>
+        </div>
+      </swiper-slide>
+    </swiper-container>
+  </div>
+  <div class="row titel" *ngIf="produkpo.length > 1">
+    <div class="col8 font-bold"><ion-icon name="time" color="warning"></ion-icon>&nbsp;Pre Order</div>
+    <div class="col4 text-primary" style="font-size: 70%;text-align: right;" routerLink="/produklist">Lihat Semua</div>
+  </div>
+  <div class="newproduct home" *ngIf="produkpo.length > 1">
+    <swiper-container [modules]="swiperModules" [autoplay]="false" [pager]="true" [slidesPerView]="2.2" [spaceBetween]="12" class="sliderproduk">
+      <swiper-slide *ngFor="let p of produkpo">
+        <div class="prod-wrap">
+          <div class="img" [ngStyle]="{'background-image':'url('+p.foto+')'}" (click)="loadProduk(p.id)"></div>
+          <div class="prod-cat" (click)="loadProduk(p.id)">{{p.kategori}}</div>
+          <div class="prod-title" (click)="loadProduk(p.id)">{{p.nama}}</div>
+          <div class="prod-label danger" *ngIf="p.po == 1">PREORDER</div>
+          <div class="prod-label" *ngIf="p.digital == 1">DIGITAL</div>
+          <div class="prod-harga" (click)="loadProduk(p.id)">
+            <i *ngIf="p.hargadiskon != null">{{p.hargadiskon}}&nbsp;</i>&nbsp;
+            <span *ngIf="p.hargadiskon != null">{{p.diskon}}%</span><br/>
+            {{p.harga}}
+          </div>
+          <div class="prod-uls">
+            <ion-button color="primary" expand="full" (click)="tambahKeranjang(p.id)">Beli Sekarang</ion-button>
+          </div>
+        </div>
+      </swiper-slide>
+    </swiper-container>
+  </div>
+  <div class="title font-bold text-center" *ngIf="testimoni.length > 0">
+    KATA PEMBELI
+  </div>
+  <div class="testimoni" *ngIf="testimoni.length > 0">
+    <swiper-container [modules]="swiperModules" [autoplay]="false" [pager]="true" [slidesPerView]="1.5" [spaceBetween]="6" class="sliderproduk">
+      <swiper-slide *ngFor="let p of testimoni">
+        <div class="testimoni-item">
+          <div class="komentar">{{p.komentar}}</div>
+          <div class="profil row">
+            <div class="col3">
+              <div class="foto" [ngStyle]="{'background-image':'url('+p.foto+')'}"></div>
+            </div>
+            <div class="col9">
+              <div class="nama font-bold">{{p.nama}}</div>
+              <div class="jabatan">{{p.jabatan}}</div>
+            </div>
+          </div>
+        </div>
+      </swiper-slide>
+    </swiper-container>
+  </div>
+  <div class="row titel" *ngIf="blog.length > 0">
+    <div class="col6 font-bold"><fa-icon icon="newspaper" class="text-primary"></fa-icon> &nbsp;Blog Terbaru</div>
+    <!--<div class="col6 text-primary" style="font-size: 70%;text-align: right;" routerLink="/produklist">Lihat Semua</div>-->
+  </div>
+  <div class="blog ion-padding" *ngIf="blog.length > 0">
+    <div class="mb10" *ngFor="let p of blog">
+      <div class="row" routerLink="/blogsingle/{{p.id}}">
+        <div class="col3"><div class="img" [ngStyle]="{'background-image':'url('+p.foto+')'}"></div></div>
+        <div class="col9">
+          <div class="title line-clamp">{{p.judul}}</div>
+          <div class="tgl"><fa-icon icon="clock"></fa-icon> &nbsp;{{p.tgl}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

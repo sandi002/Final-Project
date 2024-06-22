@@ -1,0 +1,51 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1" color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="font-bold">Bayar Tagihan {{ jenis }}</ion-title>
+  </ion-toolbar>
+  <div class="form">
+    <div class="mb10">
+      <label>Masukkan ID/Nomor Tagihan</label>
+      <ion-input type="text" class="input-bold" [(ngModel)]="nohp"></ion-input>
+    </div>
+    <div class="btn">
+      <ion-button expand="full" color="warning" (click)="cekTagihan()">Cek Tagihan</ion-button>
+    </div>
+  </div>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="produk mb50">
+    <div class="produk-list" *ngIf="produk.length > 0">
+      <div class="item" *ngFor="let i of produk;index as idx">
+        <div class="header">Informasi Tagihan</div>
+        <div class="label">Nama Customer</div>
+        <div class="isi">{{ i.nama }}</div>
+        <div class="label">No/ID Tagihan</div>
+        <div class="isi">{{ i.nomer }}</div>
+        <div class="label">Total Tagihan</div>
+        <div class="isi bold">Rp {{ i.harga|number:'':'es' }}</div>
+        <div class="label">Detail Tagihan</div>
+        <div class="detail">
+          <div class="detail-item" *ngFor="let o of i.detail">
+            <div class="judul">{{ o.periode }}</div>
+            <div class="text">Tagihan: Rp {{ o.nilai_tagihan|number:'':'es' }} | Admin: Rp {{ o.admin|number:'':'es' }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer class="btnwrap" *ngIf="produk.length > 0">
+  <div class="row">
+    <div class="col8">
+      <div class="total">Rp {{ total|number:'':'es' }}</div>
+    </div>
+    <div class="col4">
+      <ion-button color="primary" (click)="bayar()" expand="full">BAYAR</ion-button>
+    </div>
+  </div>
+</ion-footer>

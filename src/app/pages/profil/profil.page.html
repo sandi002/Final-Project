@@ -1,0 +1,49 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="primary" routerLink="/tabs/tab4" defaultHref="/tabs/tab4"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="bold">Pengaturan Profil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="form">
+    <form [formGroup]="inputForm" class="formwrap">
+      <div class="item mt30">
+        <div class="titel">Nama Lengkap</div>
+        <div class="input">
+          <ion-input formControlName="nama"></ion-input>
+        </div>
+      </div>
+      <div class="item">
+        <div class="titel">Jenis Kelamin</div>
+        <div class="input">
+          <ion-select formControlName="kelamin" interface="action-sheet">
+            <ion-select-option value="">Pilih Jenis Kelamin</ion-select-option>
+            <ion-select-option value="1">Laki-Laki</ion-select-option>
+            <ion-select-option value="2">Perempuan</ion-select-option>
+          </ion-select>
+        </div>
+      </div>
+      <div class="item">
+        <div class="titel">No. Handphone</div>
+        <div class="input">
+          <ion-input formControlName="nohp"></ion-input>
+        </div>
+      </div>
+      <div class="item">
+        <div class="titel">Alamat Email</div>
+        <div class="input">
+          <ion-input formControlName="email"></ion-input>
+        </div>
+      </div>
+    </form>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <div class="btnwrap">
+    <ion-button expand="full" color="primary" (click)="simpan()" class="btn">Simpan Profil</ion-button>
+  </div>
+</ion-footer>

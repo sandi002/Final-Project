@@ -1,0 +1,117 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="primary" routerLink="/tabs/tab3"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="font-bold">Rincian Pesanan</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content status {{warna}}">
+    <div class="desc">
+      <div class="row" *ngIf="status == 0">
+        <div class="col9">
+          <div class="title">Menunggu Pembayaran</div>
+          <div class="ket">
+            Silahkan lakukan pembayaran paling lambat <span>{{kadaluarsa}}</span> dengan metode pembayaran yang telah Anda pilih.
+          </div>
+        </div>
+        <div class="col3">
+          <img src="assets/icon/credit-card.png"/>
+        </div>
+      </div>
+      <div class="row" *ngIf="status == 1 || status == 2">
+        <div class="col9">
+          <div class="title">Proses Pengiriman</div>
+          <div class="ket">
+            Pesanan Anda sedang diproses oleh admin, untuk melihat status pengiriman klik <span>Lacak</span>.
+          </div>
+        </div>
+        <div class="col3">
+          <img src="assets/icon/shipping.png"/>
+        </div>
+      </div>
+      <div class="row" *ngIf="status == 4">
+        <div class="col9">
+          <div class="title">Pesanan Dibatalkan</div>
+          <div class="ket">
+            Pesanan Anda telah dibatalkan. Silahkan kembali ke Home apabila ingin memesan ulang produk ini.
+          </div>
+        </div>
+        <div class="col3">
+          <img src="assets/icon/cancel.png"/>
+        </div>
+      </div>
+      <div class="row" *ngIf="status == 3">
+        <div class="col9">
+          <div class="title">Pesanan Selesai</div>
+          <div class="ket">
+            Pesanan telah selesai diproses. Silahkan kembali ke Home apabila ingin memesan ulang produk ini.
+          </div>
+        </div>
+        <div class="col3">
+          <img src="assets/icon/selesai.png"/>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content" *ngIf="digital == 0">
+    <div class="row mb20">
+      <div class="col8 bold titel">
+        Pengiriman
+      </div>
+      <div class="col4 right" *ngIf="status == 2"><div routerLink="/lacakpaket/{{id}}" class="link"><fa-icon [icon]="shipping"></fa-icon> &nbsp;Lacak</div></div>
+    </div>
+    <div class="desc" *ngFor="let a of alamat">
+      <b>{{a.nama}}</b> ({{a.nohp}})<br/>
+      {{a.alamat}}, {{a.kec}}<br/>
+      {{a.kab}} {{a.kodepos}}<br/><br/>
+      <div class="text-primary"><b>{{kurir}} {{paket}}</b></div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="titel bold mb20">
+      Daftar Belanja
+    </div>
+    <ion-list *ngIf="produk" lines="none">
+      <ion-item class="row item" *ngFor="let i of produk">
+        <div class="col2 foto" [ngStyle]="{'background-image':'url('+i.foto+')'}">
+        </div>
+        <div class="col10 right">
+          <div class="title">{{i.nama}}</div>
+          <div class="variasi">{{i.variasi}}</div>
+          <div class="jumlah">{{i.harga}} x {{i.jumlah}}pcs</div>
+          <div class="variasi">{{i.keterangan}}</div>
+          <div class="link mt10">
+            <ion-button href="{{i.link}}" *ngIf="status > 0 && status < 4 && i.link != ''" color="primary" size="small" expand="full"><ion-icon name="arrow-down-circle"></ion-icon> &nbsp;Akses Produk</ion-button>
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </div>
+  <div class="content">
+    <div class="titel bold row">
+        Detail Pembayaran
+    </div>
+    <div class="rincian row">
+      <div class="col6">Harga Barang</div>
+      <div class="col6 right">Rp. {{harga}}</div>
+    </div>
+    <div class="rincian row" *ngIf="digital == 0">
+      <div class="col6">Biaya Pengiriman</div>
+      <div class="col6 right">Rp. {{ongkir}}</div>
+    </div>
+    <div class="rincian row" *ngIf="digital == 0">
+      <div class="col6">Biaya Penanganan</div>
+      <div class="col6 right" *ngIf="cod">Rp. {{cod}}</div>
+      <div class="col6 right" *ngIf="!cod">Rp. 0</div>
+    </div>
+    <div class="rincian mb20">&nbsp;</div>
+    <div class="rincian row">
+      <div class="col6"><b>Total Transaksi</b></div>
+      <div class="col6 right total"><b>Rp. {{total}}</b></div>
+    </div>
+  </div>
+  <div class="mb40"></div>
+</ion-content>

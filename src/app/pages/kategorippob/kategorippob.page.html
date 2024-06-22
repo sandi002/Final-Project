@@ -1,0 +1,36 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Top Up & Tagihan</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="titel">
+    <div class="text">TOP UP</div>
+    <div class="line"></div>
+  </div>
+  <div class="row kategori mb20">
+    <div class="col3" *ngFor="let r of kategoritop" routerLink="/ppobtopup/{{r.kode}}">
+      <div class="wrap">
+        <div class="foto"><img src="{{r.foto}}" /></div>
+        <div class="cat-title">{{r.nama}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="titel">
+    <div class="text">TAGIHAN</div>
+    <div class="line"></div>
+  </div>
+  <div class="row kategori mb40">
+    <div class="col3" *ngFor="let r of kategoritag" routerLink="/ppobtagihan/{{r.kode}}">
+      <div class="wrap">
+        <div class="foto"><img src="{{r.foto}}" /></div>
+        <div class="cat-title">{{r.nama}}</div>
+      </div>
+    </div>
+  </div>
+</ion-content>

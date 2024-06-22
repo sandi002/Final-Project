@@ -1,0 +1,162 @@
+.total{
+    border-top: 12px solid #f4f4f4;
+    padding: 20px;
+}
+.otomatis,
+.pilihmetode,
+.transfer{
+    padding: 20px;
+}
+.transfer{
+    border-top: 12px solid #f4f4f4;
+}
+.text{
+    font-family: 'appbold';
+    margin-bottom: 4px;
+}
+.total .inv{
+    font-family: 'appbold';
+    font-weight: bolder;
+    font-size: 220%;
+    color: var(--ion-color-primary);
+    margin-bottom: 12px;
+}
+.total .notif{
+    background-color: #FFF7E2;
+    color: #9A6F32;
+    border: 1px solid #9A6F32;
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 90%;
+    margin-bottom: 20px;
+}
+.total .info{
+    border-top: 1px solid #f4f4f4;
+    padding: 12px 0;
+}
+.total .batas{
+    font-size: 85%;
+}
+
+.list{
+    width: 100%;
+    margin-top: 10px;
+}
+
+.rekening{
+    margin-bottom: 20px;
+}
+.rekening .atasnama{
+    font-family: 'appbold';
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+.rekening .norek{
+    font-family: 'appblack';
+    font-size: 140%;
+    color: #2c3e50;
+    padding: 8px 12px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+}
+
+.metode .col6{
+    padding: 8px;
+    position: relative;
+}
+.metode .metode-item{
+    color: #2c3e50;
+    border: 2px dashed #2c3e50;
+    background-color: #cfcfcf;
+    padding: 16px 8px;
+    font-family: "appblack";
+    text-align: center;
+    border-radius: 6px;
+}
+.metode .metode-item.aktif{
+    color: #ffffff;
+    border: 2px solid #2c3e50;
+    background-color: #2c3e50;
+}
+.label{
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    color: #ffffff;
+    font-size: 120%;
+}
+.img{
+    margin-bottom: 10px;
+}
+.otomatis .rekening{
+    margin-bottom: 30px;
+}
+
+.payment-button-wrap .col6{
+    padding: 8px;
+}
+.payment-button{
+    padding: 8px;
+    border-radius: 8px;
+    border: 2px solid #f4f4f4;
+    min-height: 32vw;
+    position: relative;
+}
+.payment-button.active{
+    border: 2px solid var(--ion-color-primary);
+    color: var(--ion-color-primary);
+}
+.payment-button fa-icon{
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    color: var(--ion-color-primary);
+    font-size: 120%;
+    display: none;
+}
+.payment-button.active fa-icon{
+    display: block;
+}
+.payment-button .img{
+    text-align: center;
+    padding: 8px;
+}
+.payment-button .img img{
+    height: 10vw;
+}
+.payment-button .text{
+    font-family: appmedium;
+    font-size: 90%;
+    text-align: center;
+}
+.padding{
+    padding: 8px;
+}
+.tripay-info{
+    font-size: 140%;
+}
+.tripay-info small{
+    color: #a5a5a5;
+    font-family: appmedium;
+}
+.qrcode{
+    padding: 24px 12px;
+    background-color: #FFF7E2;
+    border-radius: 8px;
+}
+.bukti{
+    text-align: center;
+}
+.bukti img{
+    max-width: 100%;
+    max-height: 50vh;
+    border: 2px dashed var(--ion-color-primary);
+    border-radius: 12px;
+}
+img{
+    width: 100%;
+}
+.pl{
+    padding-left: 12px;
+}

@@ -1,0 +1,117 @@
+ion-toolbar,
+ion-content{
+    --background: #eaf1ff;
+}
+.kosong{
+    padding: 40px 20px;
+    margin-top: 20vh;
+}
+.foto{
+    height: 20vw;
+    background-size: cover;
+    background-position: center center;
+    overflow: hidden;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    margin-left: 0;
+}
+
+ion-list{
+    background: transparent;
+}
+.items{
+    border-radius: 12px;
+    background-color: #fff;
+    width: 94vw;
+    margin: 3vw auto;
+}
+.items .right{
+    padding: 10px;
+}
+.items .title{
+    padding: 0;
+    text-align: left;
+    margin-bottom: 4px;
+    font-size: 100%;
+    font-family: appbold;
+}
+.items .variasi{
+    color: #2c3e50;
+    font-size: 80%;
+    text-align: left;
+    margin-bottom: 4px;
+}
+.items .jumlah{
+    font-size: 110%;
+    font-family: appbold;
+    text-align: left;
+    margin-bottom: 8px;
+    color: var(--ion-color-primary);
+}
+.items .col9{
+    padding-left: 20px;
+}
+.items .gudang{
+    font-style: italic;
+    color: var(--ion-color-primary);
+    padding: 0;
+    font-size: 80%;
+    text-align: left;
+}
+
+.btnwrap{
+    padding: 14px;
+}
+.red{
+    color: #c0392b;
+    font-family: "appmedium";
+}
+
+.jmlbtn ion-input{
+    text-align: center;
+    --padding-top: 4px;
+    --padding-bottom: 4px;
+    font-family: "appbold";
+}
+.jmlbtn ion-button{
+    margin-inline: 0;
+    --padding-top: 6px;
+    --padding-bottom: 6px;
+}
+.total{
+    font-size: 130%;
+    font-family: "appbold";
+    color: var(--ion-color-primary);
+}
+.cekout{
+    --padding-top: 16px;
+    --padding-bottom: 16px;
+}
+
+.segmen{
+    padding: 12px 0;
+}
+.segmen .seg-title{
+    padding: 4px 12px;
+    background-color: var(--ion-color-danger);
+    border-radius: 20px;
+    font-family: "appbold";
+    text-transform: uppercase;
+    width: fit-content;
+    margin: auto;
+    color: #fff;
+}
+.segmen .seg-line{
+    border: 1px solid var(--ion-color-danger);
+    margin-top: -15px;
+}
+
+.notif{
+    width: 94vw;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 12px;
+    margin: auto;
+    font-size: 90%;
+    color: var(--ion-color-danger);
+}

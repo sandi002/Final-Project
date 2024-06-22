@@ -1,0 +1,59 @@
+<ion-content class="ion-padding">
+
+  <ion-grid>
+    <div class="mb20">
+      <h4 class="font-medium text-primary">{{title}}</h4>
+    </div>
+    <form [formGroup]="inputForm" class="formwrap mb40">
+      <ion-input type="hidden" formControlName="idproduk"></ion-input>
+      <ion-input type="hidden" formControlName="variasi"></ion-input>
+      <ion-item class="form" *ngIf="variasea != 0" lines="none">
+        <ion-label position="floating">{{variasi}}</ion-label>
+        <ion-select placeholder="pilih {{variasi}}" interface="popover" formControlName="warna" (ionChange)="getSize()">
+          <ion-select-option *ngFor="let v of warnas" value="{{v.id}}">{{v.nama}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <div class="alert" *ngIf="!inputForm.controls.warna.valid  && (inputForm.controls.warna.dirty || inputForm.controls.warna.touched || submitAttempt)">
+          <p>pilih {{variasi}}.</p>
+      </div>
+      <ion-item class="form" *ngIf="variasea != 0 && sizes.length > 0" lines="none">
+        <ion-label position="floating">{{subvariasi}}</ion-label>
+        <ion-select placeholder="pilih {{subvariasi}}" interface="popover" formControlName="size" (ionChange)="setVariasi()">
+          <ion-select-option *ngFor="let v of sizes" value="{{v.id}}">{{v.nama}} (stok: {{v.stok}})</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <div class="alert" *ngIf="!inputForm.controls.variasi.valid  && (inputForm.controls.variasi.dirty || inputForm.controls.variasi.touched || submitAttempt)">
+          <p>pilih {{subvariasi}}.</p>
+      </div>
+      <div class="form">
+          <div class="mb10">Jumlah Barang</div>
+          <!--<ion-input formControlName="jumlah" type="tel" pattern="[0-9]*"></ion-input>-->
+          <div class="row jmlbtn col6">
+            <div class="col3">
+              <ion-button color="primary" expand="full" (click)="kurang()"><fa-icon [icon]="minus"></fa-icon></ion-button>
+            </div>
+            <div class="col6">
+              <ion-input type="number" formControlName="jumlah"></ion-input>
+            </div>
+            <div class="col3">
+              <ion-button color="primary" expand="full" (click)="tambah()"><fa-icon [icon]="plus"></fa-icon></ion-button>
+            </div>
+          </div>
+      </div>
+      <ion-item class="form" lines="none">
+        <ion-label position="floating">Catatan Tambahan</ion-label>
+        <ion-textarea rows="2" formControlName="keterangan"></ion-textarea>
+      </ion-item>
+    </form>
+
+    <ion-row>
+      <ion-col text-center>
+        <ion-button (click)="closeModal()" color="danger" expand="full">Batalkan</ion-button>
+      </ion-col>
+      <ion-col text-center>
+        <ion-button (click)="beliproduk()" color="primary" expand="full">+ Keranjang</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

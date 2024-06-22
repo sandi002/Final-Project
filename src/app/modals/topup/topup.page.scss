@@ -1,0 +1,26 @@
+.form{
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+.item,
+.row{
+    padding: 5px 20px;
+    margin-bottom: 8px;
+    margin-top: 20px;
+}
+.item .titel{
+    font-family: "appmedium";
+    font-size: 110%;
+    margin-bottom: 8px;
+}
+.item .input{
+    font-size: 120%;
+    padding: 0 8px;
+}
+.item .row{
+    margin: 0;
+    padding: 0;
+}
+.item .row .col6{
+    padding: 0 4px;
+}

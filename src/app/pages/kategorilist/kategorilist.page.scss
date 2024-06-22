@@ -1,0 +1,25 @@
+ion-content,
+ion-toolbar{
+  --background: #f2f3f8;
+}
+.kategori{
+  margin-top: 20px;
+  padding: 10px;
+  justify-content: start;
+  align-items: flex-start;
+}
+.kategori .col3{
+  padding: 8px;
+  text-align: center;
+}
+.kategori .col3 .wrap{
+  padding-bottom: 12px;
+}
+.kategori .col3 .foto img{
+  width: 70%;
+}
+.kategori .col3 .cat-title{
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 90%;
+}

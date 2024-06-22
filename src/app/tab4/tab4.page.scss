@@ -1,0 +1,108 @@
+ion-toolbar,
+ion-content{
+    --background: #eaf1ff;
+}
+.menu{
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 0 2px 2px #ededed;
+    margin-bottom: 12px;
+}
+.menubutton{
+    background-color: #eaf1ff;
+    height: 300px;
+}
+.menutitel{
+    font-family: "appmedium";
+    margin-bottom: 2vw;
+    font-size: 120%;
+}
+.menu .row:not(:last-child){
+    border-bottom: 1px solid #eaf1ff;
+    margin-bottom: 1vw;
+}
+.menu .row{
+    font-family: "appbold";
+    padding: 2vw 0;
+    align-items: flex-start;
+}
+.menu .col8{
+    font-family: "appmedium";
+    margin-top: 2px;
+}
+.menu .col2{
+    text-align: right;
+    font-size: 160%;
+    padding-right: 12px;
+}
+
+.userdetail{
+    padding: 4vw 6vw;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 0 2px 2px #ededed;
+    margin-bottom: 2vw;
+}
+.userdetail .col2 img{
+    border-radius: 30px;
+    border: 2px solid var(--ion-color-primary);
+}
+.userdetail .col10{
+    padding: 12px;
+}
+.userdetail .nama{
+    font-family: "appbold";
+    font-size: 120%;
+    text-transform: capitalize;
+}
+.userdetail .level{
+    font-family: "appmedium";
+    font-size: 90%;
+    color: var(--ion-color-primary);
+}
+.usersaldowrap{
+    position: relative;
+    padding-bottom: 6vw;
+    width: 100%;
+    justify-content: center;
+}
+.usersaldo{
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 3vw 6vw;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 0 2px 2px #ededed;
+}
+.usersaldo .col2{
+    padding: 1vw;
+}
+.usersaldo .col10{
+    padding: 2vw;
+}
+.saldotitel{
+    font-size: 85%;
+    color: #757575;
+    font-family: "appmedium";
+}
+.usersaldo .titel{
+    font-family: "appmedium";
+    font-size: 110%;
+    margin-bottom: 8px;
+}
+.usersaldo .saldo{
+    font-family: "appblack";
+    font-size: 110%;
+    color: var(--ion-color-primary);
+}
+.usersaldo .tombol ion-button{
+    border-radius: 4px;
+    font-family: "appbold";
+}
+.primary{
+    color: var(--ion-color-warning);
+    font-size: 22pt;
+}
+.col8{
+    padding-left: 12px;
+}
